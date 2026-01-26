@@ -34,7 +34,7 @@ WY NOTES 是一个基于 **SvelteKit** 和 **Supabase** 构建的现代化、极
 
 ### 2. 获取代码
 ```bash
-git clone https://github.com/your-repo/wy-notes.git
+git clone https://github.com/wying3052/wy-notes.git
 cd wy-notes
 ```
 
