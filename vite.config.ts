@@ -12,16 +12,6 @@ logger.warn = (msg, options) => {
 export default defineConfig({
 	customLogger: logger,
 	plugins: [sveltekit()],
-	ssr: {
-		noExternal: [
-			'carta-md',
-			'@cartamd/plugin-attachment',
-			'@cartamd/plugin-code',
-			'@cartamd/plugin-slash',
-			'@cartamd/plugin-emoji',
-			'@cartamd/plugin-math'
-		]
-	},
 	build: {
 		target: 'esnext',
 		sourcemap: false

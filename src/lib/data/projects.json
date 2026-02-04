@@ -1,0 +1,63 @@
+[
+    {
+        "id": "1",
+        "title": "WY NOTES",
+        "description": "基于 SvelteKit 构建极简主义全栈 CMS，注重阅读体验与高性能。",
+        "long_description": "WY NOTES 是一个现代化内容管理系统，采用 Svelte 5 Runes 和 Tailwind CSS v4 构建。它不仅是一个博客，更是一个数字花园，集成了文章、项目展示和资源分享功能。",
+        "slug": "wy-notes",
+        "url": "https://wy-notes.vercel.app",
+        "github_url": "https://github.com/wying3052/wy-notes",
+        "cover": "https://placehold.co/800x500/1e293b/f8fafc?text=WY+NOTES",
+        "tags": [
+            "Fullstack",
+            "SvelteKit",
+            "Supabase",
+            "Tailwind"
+        ]
+    },
+    {
+        "id": "2",
+        "title": "AI 代码助手 (Vibe Coder)",
+        "description": "一个注重“氛围感”的 AI 辅助编程工具，让 coding 变得像艺术创作。",
+        "long_description": "集成 Claude 3.5 Sonnet 模型，专注于理解开发者的顶层设计意图。它不只是生成代码，更是协助你打磨软件的灵魂。",
+        "slug": "vibe-coder",
+        "url": "#",
+        "github_url": "#",
+        "cover": "",
+        "tags": [
+            "AI",
+            "LLM",
+            "Tooling"
+        ]
+    },
+    {
+        "id": "3",
+        "title": "极光 UI (Aurora UI)",
+        "description": "一套受北极光启发的 Svelte 组件库，拥有迷人的玻璃拟态效果。",
+        "long_description": "专为现代 Web 应用设计，利用 CSS 变量和 Backdrop Filter 实现高性能的模糊与光效。开箱即用，支持暗色模式。",
+        "slug": "aurora-ui",
+        "url": "#",
+        "github_url": "#",
+        "cover": "",
+        "tags": [
+            "UI Lib",
+            "Svelte",
+            "Design System"
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Next-Gen 仪表盘",
+        "description": "为 SaaS 产品设计的高性能数据可视化仪表盘模板。",
+        "long_description": "使用 ECharts 和 Svelte 深度集成，支持实时数据流更新，在大屏展示场景下依然保持 60fps 的流畅度。",
+        "slug": "next-gen-dashboard",
+        "url": "#",
+        "github_url": "#",
+        "cover": "",
+        "tags": [
+            "Dashboard",
+            "Data Viz",
+            "SaaS"
+        ]
+    }
+]

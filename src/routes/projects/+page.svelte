@@ -1,17 +1,15 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import { ArrowRight, Sparkles, Filter, Globe, Github } from 'lucide-svelte';
-	import ProjectGridItem from '$lib/components/projects/ProjectGridItem.svelte';
-	import { onMount } from 'svelte';
+	import { ArrowRight, Globe, Github } from 'lucide-svelte';
 
 	let { data } = $props();
 	let { projects } = $derived(data);
-
-	let mounted = $state(false);
-	onMount(() => {
-		mounted = true;
-	});
 </script>
+
+<svelte:head>
+	<title>精选项目 | WY NOTES</title>
+	<meta name="description" content="探索 WY NOTES 的开源项目和数字作品，体验创意与技术的结合。" />
+</svelte:head>
 
 <div class="relative min-h-screen pb-32">
 	<!-- 背景装饰: 彩色柔焦光晕 -->
@@ -31,11 +29,7 @@
 				class="flex items-center space-x-3 text-brand font-bold uppercase tracking-[0.2em] text-[10px] mb-6 overflow-hidden"
 			>
 				<div class="h-px w-8 bg-brand"></div>
-				<span
-					class="transform transition-transform duration-700 {mounted
-						? 'translate-y-0'
-						: 'translate-y-full'}"
-				>
+				<span class="fade-in">
 					精品数字作品展示
 				</span>
 			</div>
@@ -54,15 +48,13 @@
 		<!-- 2. 内容列表 (全员大卡片风格) -->
 		<div class="space-y-24 md:space-y-32">
 			{#if projects.length > 0}
-				{#each projects as project, i (project.url)}
-					<section
-						class="h-full transform transition-all duration-1000 {mounted
-							? 'translate-y-0 opacity-100'
-							: 'translate-y-12 opacity-0'}"
-						style="transition-delay: {i * 150}ms"
-					>
+				{#each projects as project, i (project.id)}
+					<section class="h-full fade-in" style="animation-delay: {i * 150}ms">
 						<article class="group relative transition-all duration-700">
-							<a href={resolve(project.url)} class="absolute inset-0 z-10 block">
+							<a
+								href={resolve(`/projects/${project.slug || project.id}`)}
+								class="absolute inset-0 z-10 block"
+							>
 								<span class="sr-only">查看 {project.title}</span>
 							</a>
 
@@ -73,7 +65,7 @@
 										class="block relative aspect-[16/10] rounded-[2.5rem] overflow-hidden shadow-2xl transition-transform duration-700 group-hover:scale-[0.98]"
 									>
 										<img
-											src={project.image}
+											src={project.cover}
 											alt={project.title}
 											class="w-full h-full object-cover transform scale-100 group-hover:scale-105 transition-transform duration-1000 ease-out"
 										/>
@@ -95,7 +87,7 @@
 									<div
 										class="flex items-center gap-4 text-slate-400 font-mono text-[10px] font-bold tracking-[0.2em] uppercase"
 									>
-										<span>{project.year}</span>
+										<span>项目</span>
 									</div>
 
 									<h2
@@ -105,7 +97,7 @@
 									</h2>
 
 									<p class="text-base md:text-lg text-slate-500 leading-relaxed max-w-md">
-										{project.desc}
+										{project.description}
 									</p>
 
 									<div class="flex flex-wrap gap-2">
@@ -120,9 +112,9 @@
 
 									<div class="pt-6 flex flex-wrap items-center gap-4 relative z-20">
 										<!-- 链接按钮 (需设置 z-20 以便在覆盖层之上点击) -->
-										{#if project.demoUrl}
+										{#if project.url && project.url !== '#'}
 											<a
-												href={project.demoUrl}
+												href={project.url}
 												target="_blank"
 												rel="noopener noreferrer"
 												class="w-12 h-12 flex items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:text-brand hover:border-brand hover:bg-brand/5 transition-all"
@@ -131,9 +123,9 @@
 												<Globe size={20} />
 											</a>
 										{/if}
-										{#if project.repoUrl}
+										{#if project.github_url && project.github_url !== '#'}
 											<a
-												href={project.repoUrl}
+												href={project.github_url}
 												target="_blank"
 												rel="noopener noreferrer"
 												class="w-12 h-12 flex items-center justify-center rounded-full border border-slate-200 text-slate-500 hover:text-slate-900 hover:border-slate-900 hover:bg-slate-50 transition-all"
@@ -143,20 +135,6 @@
 											</a>
 										{/if}
 									</div>
-
-									<!-- 作者信息 -->
-									{#if project.author}
-										<div class="flex items-center gap-3 pt-2">
-											<img
-												src={project.author.avatar}
-												alt={project.author.name}
-												class="w-8 h-8 rounded-full bg-slate-100 object-cover ring-2 ring-white shadow-sm"
-											/>
-											<span class="text-xs font-bold text-slate-900">
-												{project.author.name}
-											</span>
-										</div>
-									{/if}
 								</div>
 							</div>
 

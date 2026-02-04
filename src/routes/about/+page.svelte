@@ -79,7 +79,7 @@
 		<div class="glass rounded-3xl p-7 border border-white/60">
 			<h2 class="text-lg font-extrabold text-slate-900">技术栈</h2>
 			<div class="mt-4 flex flex-wrap gap-2">
-				{#each ['SvelteKit', 'Svelte 5', 'TailwindCSS 4', 'bits-ui', 'Supabase'] as item (item)}
+				{#each ['SvelteKit', 'Svelte 5', 'TailwindCSS 4', 'Unified'] as item (item)}
 					<span
 						class="px-3 py-1 rounded-lg bg-white/70 border border-white/60 text-xs font-bold text-slate-700"
 					>

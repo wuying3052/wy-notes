@@ -21,8 +21,8 @@ export default defineConfig(
 		languageOptions: { globals: { ...globals.browser, ...globals.node } },
 
 		rules: {
-			// typescript-eslint strongly recommend that you do not use the no-undef lint rule on TypeScript projects.
-			// see: https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
+			// typescript-eslint 强烈建议您不要在 TypeScript 项目上使用 no-undef lint 规则。
+			// 请参阅：https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-define-even-though-there-are-no-typescript-errors
 			'no-undef': 'off'
 		}
 	},

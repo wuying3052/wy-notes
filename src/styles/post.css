@@ -1,0 +1,210 @@
+/**
+ * 文章内容样式
+ * 支持 full-bleed 的网格布局
+ */
+
+/* 网格布局的 prose 容器 */
+.prose {
+    --padding: 0px;
+    --content-width: 90ch;
+
+    display: grid;
+    grid-template-columns:
+        1fr [gutter-start] var(--padding) [content-start] minmax(0px, var(--content-width)) [content-end] var(--padding) [gutter-end] 1fr;
+}
+
+@media (min-width: 640px) {
+    .prose {
+        --padding: 2.5rem;
+    }
+}
+
+/* 所有直接子元素默认放入 content 区域 */
+.prose>* {
+    grid-column: content-start / content-end;
+}
+
+/* Full-bleed 元素在大屏上扩展到 gutter */
+@media (min-width: 800px) {
+    .prose :where(iframe, video, img, pre, .rehype-code-title, .full-bleed) {
+        grid-column: gutter-start / gutter-end;
+    }
+}
+
+/* 标题 */
+.prose h1 {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #0f172a;
+}
+
+.prose h2 {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #1e293b;
+}
+
+.prose h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.375rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #1e293b;
+}
+
+/* 标题锚点链接 */
+.prose h2 a.icon-link,
+.prose h3 a.icon-link {
+    position: relative;
+    text-decoration: none;
+}
+
+.prose h2 a.icon-link::before {
+    content: '#';
+    position: absolute;
+    left: -1.5rem;
+    color: #6366f1;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.prose h2:hover a.icon-link::before,
+.prose h3:hover a.icon-link::before {
+    opacity: 1;
+}
+
+/* 段落 */
+.prose p {
+    margin-bottom: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #334155;
+}
+
+/* 链接 */
+.prose a {
+    color: #6366f1;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease;
+}
+
+.prose a:hover {
+    color: #4f46e5;
+}
+
+/* 列表 */
+.prose ul,
+.prose ol {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+}
+
+.prose li {
+    margin-bottom: 0.5rem;
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #334155;
+}
+
+.prose ul>li {
+    list-style-type: disc;
+}
+
+.prose ol>li {
+    list-style-type: decimal;
+}
+
+/* 嵌套列表 */
+.prose li>ul,
+.prose li>ol {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+}
+
+/* 引用块 */
+.prose blockquote {
+    position: relative;
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    font-size: 1.125rem;
+    font-style: italic;
+    color: #475569;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-left: 4px solid #6366f1;
+    border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.prose blockquote p {
+    margin-bottom: 0;
+}
+
+/* 图片 */
+.prose img {
+    margin: 2rem auto;
+    border-radius: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* 分割线 */
+.prose hr {
+    margin: 3rem 0;
+    border: none;
+    border-top: 2px solid #e2e8f0;
+}
+
+/* 表格 */
+.prose table {
+    width: 100%;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.prose th {
+    font-weight: 600;
+    color: #1e293b;
+    background: #f8fafc;
+}
+
+.prose tr:hover {
+    background: #f8fafc;
+}
+
+/* 粗体和斜体 */
+.prose strong {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.prose em {
+    font-style: italic;
+}
+
+/* 代码块间距 */
+.prose pre,
+.prose .rehype-code-title {
+    margin-bottom: 0;
+}
+
+.prose .rehype-code-title+pre {
+    margin-top: 0;
+}
+
+.prose pre+*:not(.rehype-code-title) {
+    margin-top: 2rem;
+}

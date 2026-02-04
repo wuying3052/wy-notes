@@ -1,76 +1,50 @@
-import type { RequestHandler } from './$types';
+import { getPosts } from '$lib/server/content';
 
-export const GET: RequestHandler = async ({ locals }) => {
-    const { supabase } = locals;
+export const GET = async () => {
+    const posts = await getPosts();
+    const pages = [
+        'https://wy-notes.vercel.app',
+        'https://wy-notes.vercel.app/articles',
+        'https://wy-notes.vercel.app/projects',
+        'https://wy-notes.vercel.app/resources',
+        'https://wy-notes.vercel.app/about'
+    ];
 
-    // 获取所有文章和项目
-    const [articlesResult, projectsResult] = await Promise.all([
-        supabase
-            .from('articles')
-            .select('slug, updated_at')
-            .eq('published', true)
-            .is('deleted_at', null)
-            .order('updated_at', { ascending: false }),
-        supabase
-            .from('projects')
-            .select('slug, updated_at')
-            .eq('published', true)
-            .is('deleted_at', null)
-            .order('updated_at', { ascending: false })
-    ]);
+    const postLinks = posts.map(
+        (post) => `
+		<url>
+			<loc>https://wy-notes.vercel.app/articles/${post.slug}</loc>
+			<lastmod>${new Date(post.date).toISOString()}</lastmod>
+		</url>
+	`
+    );
 
-    const articles = articlesResult.data ?? [];
-    const projects = projectsResult.data ?? [];
-
-    // 获取站点域名 (建议在 .env 中设置 PUBLIC_SITE_URL)
-    // 这里预设一个占位，实际部署时应通过环境变量获取
-    const siteUrl = 'https://wy-notes.pages.dev';
-
-    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url>
-		<loc>${siteUrl}/</loc>
-		<changefreq>daily</changefreq>
-		<priority>1.0</priority>
-	</url>
-	<url>
-		<loc>${siteUrl}/articles</loc>
-		<changefreq>daily</changefreq>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>${siteUrl}/projects</loc>
-		<changefreq>daily</changefreq>
-		<priority>0.8</priority>
-	</url>
-	${articles
+    const body = `
+		<?xml version="1.0" encoding="UTF-8" ?>
+		<urlset
+			xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+			xmlns:xhtml="https://www.w3.org/1999/xhtml"
+			xmlns:mobile="https://www.google.com/schemas/sitemap-mobile/1.0"
+			xmlns:news="https://www.google.com/schemas/sitemap-news/0.9"
+			xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
+			xmlns:video="https://www.google.com/schemas/sitemap-video/1.1"
+		>
+			${pages
             .map(
-                (a) => `
-	<url>
-		<loc>${siteUrl}/articles/${a.slug}</loc>
-		<lastmod>${new Date(a.updated_at).toISOString()}</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>0.7</priority>
-	</url>`
+                (url) => `
+				<url>
+					<loc>${url}</loc>
+				</url>
+			`
             )
             .join('')}
-	${projects
-            .map(
-                (p) => `
-	<url>
-		<loc>${siteUrl}/projects/${p.slug}</loc>
-		<lastmod>${new Date(p.updated_at).toISOString()}</lastmod>
-		<changefreq>monthly</changefreq>
-		<priority>0.6</priority>
-	</url>`
-            )
-            .join('')}
-</urlset>`;
+			${postLinks.join('')}
+		</urlset>
+	`.trim();
 
-    return new Response(sitemap, {
+    return new Response(body, {
         headers: {
-            'Content-Type': 'application/xml',
-            'Cache-Control': 'max-age=0, s-maxage=3600'
+            'Content-Type': 'application/xml'
         }
     });
 };
