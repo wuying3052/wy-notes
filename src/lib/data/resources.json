@@ -323,5 +323,18 @@
             "Brands",
             "SVG"
         ]
+    },
+    {
+        "id": "26",
+        "title": "Cloudflare",
+        "description": "全球领先的 CDN、DNS 与安全服务提供商，本项目推荐 domestic 加速方案。",
+        "url": "https://www.cloudflare.com/",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png",
+        "category": "开发平台",
+        "tags": [
+            "CDN",
+            "DNS",
+            "安全"
+        ]
     }
 ]

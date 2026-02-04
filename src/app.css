@@ -91,15 +91,15 @@ body {
 
 /* 玻璃态 */
 .glass {
-	background: rgba(255, 255, 255, 0.1);
-	backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px);
-	border: 1px solid rgba(255, 255, 255, 0.2);
+	background: rgba(255, 255, 255, 0.6);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .dark .glass {
-	background: rgba(0, 0, 0, 0.2);
-	border: 1px solid rgba(255, 255, 255, 0.1);
+	background: rgba(0, 0, 0, 0.4);
+	border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* 动画 */
@@ -115,5 +115,64 @@ body {
 
 	to {
 		opacity: 1;
+	}
+}
+
+/* 动态背景 */
+.animated-bg {
+	background: linear-gradient(-45deg, #ffffff, #f8fafc, #fafafa, #f1f5f9);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+.dark .animated-bg {
+	background: linear-gradient(-45deg, #020617, #0f172a, #1e293b, #020617);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+/* 文字流光 */
+.text-shimmer {
+	background: linear-gradient(to right,
+			#0f172a 20%,
+			#2563eb 30%,
+			#3b82f6 40%,
+			#0f172a 50%);
+	background-size: 200% auto;
+	color: #000;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shimmer 4s linear infinite;
+}
+
+.dark .text-shimmer {
+	background: linear-gradient(to right,
+			#f8fafc 20%,
+			#60a5fa 30%,
+			#93c5fd 40%,
+			#f8fafc 50%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+@keyframes shimmer {
+	to {
+		background-position: 200% center;
+	}
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
 	}
 }

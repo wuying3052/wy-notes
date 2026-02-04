@@ -9,7 +9,7 @@ export const load = async () => {
 		created_at: post.date,
 		slug: post.slug,
 		cover_image: post.cover_image,
-		tag: post.tags?.[0] || '文章'
+		tags: post.tags || ['文章']
 	}));
 
 	const featuredProjects = projectsRaw.slice(0, 2).map((proj, index) => ({

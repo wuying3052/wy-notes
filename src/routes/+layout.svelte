@@ -5,6 +5,8 @@
 	import wyNotesLogo from '$lib/assets/image/wy-notes-logo.webp';
 	import SiteHeader from '$lib/components/layout/SiteHeader.svelte';
 	import SiteFooter from '$lib/components/layout/SiteFooter.svelte';
+	import ReadingProgress from '$lib/components/ui/ReadingProgress.svelte';
+	import BackToTop from '$lib/components/ui/BackToTop.svelte';
 	import '../app.css';
 	let { children } = $props();
 	let showLayout = $derived($page.status < 400);
@@ -33,14 +35,16 @@
 	<meta property="twitter:image" content={SITE_CONFIG.ogImage} />
 </svelte:head>
 
-<div class="min-h-screen flex flex-col relative">
+<div class="min-h-screen flex flex-col relative animated-bg">
 	{#if showLayout}
 		<SiteHeader logoSrc={wyNotesLogo} siteName="WY NOTES" />
 
 		<main class="flex-grow pt-16">
+			<ReadingProgress />
 			{@render children()}
 		</main>
 
+		<BackToTop />
 		<SiteFooter logoSrc={wyNotesLogo} siteName="WY NOTES" />
 	{:else}
 		{@render children()}

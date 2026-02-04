@@ -2,31 +2,37 @@
 	import { resolve } from '$app/paths';
 	import { ArrowRight } from 'lucide-svelte';
 	import * as Card from '$lib/components/ui/card';
+	import defaultCover from '$lib/assets/image/default-cover.png';
 
 	type ArticleItem = {
 		title: string;
 		slug: string;
 		excerpt: string;
-		cover_image: string;
+		cover_image?: string;
 		created_at: string;
 		tags?: string[];
 	};
 
-	let { article, imageAspect = 'aspect-[2.2/1]' } = $props<{
+	let {
+		article,
+		imageAspect = 'aspect-[2.2/1]',
+		class: className = ''
+	} = $props<{
 		article: ArticleItem;
 		imageAspect?: string;
+		class?: string;
 	}>();
 </script>
 
 <Card.Root
-	class="group h-full flex flex-col overflow-hidden rounded-2xl border-slate-100 bg-white p-0 gap-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50"
+	class="group h-full flex flex-col overflow-hidden rounded-2xl border-slate-100 bg-white p-0 gap-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 {className}"
 >
 	<a
 		href={resolve(`/articles/${article.slug}`)}
 		class="relative block {imageAspect} w-full overflow-hidden"
 	>
 		<img
-			src={article.cover_image}
+			src={article.cover_image || defaultCover}
 			alt={article.title}
 			class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
 		/>
