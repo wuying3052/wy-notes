@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
-	import BrandIcon from '$lib/components/BrandIcon.svelte';
+	import BrandIcon from '$lib/components/ui/BrandIcon.svelte';
 	import { siteNavItems } from '$lib/site/nav';
 
 	let { logoSrc, siteName } = $props<{

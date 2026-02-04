@@ -4,7 +4,7 @@
 	import { page } from '$app/stores';
 	import { Menu, X } from 'lucide-svelte';
 	import { tick } from 'svelte';
-	import BrandIcon from '$lib/components/BrandIcon.svelte';
+	import BrandIcon from '$lib/components/ui/BrandIcon.svelte';
 	import { siteNavItems } from '$lib/site/nav';
 
 	let { logoSrc, siteName } = $props<{

@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { onMount } from 'svelte';
-	import { Calendar, ChevronLeft, PanelRightClose, PanelRightOpen } from 'lucide-svelte';
+	import { Calendar, ChevronLeft, PanelRightOpen } from 'lucide-svelte';
 	import type { PageData } from './$types';
-	import TableOfContents from '$lib/components/blog/TableOfContents.svelte';
+	import TableOfContents from '$lib/components/articles/TableOfContents.svelte';
 
 	// 导入样式
 	import '@styles/code.css';
