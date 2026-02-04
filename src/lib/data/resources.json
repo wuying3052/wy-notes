@@ -1,71 +1,6 @@
 [
     {
         "id": "1",
-        "title": "Svelte",
-        "description": "控制论增强的 Web 应用框架，Svelte 5 引入了革命性的 Runes。",
-        "url": "https://svelte.dev",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg",
-        "category": "前端生态",
-        "tags": [
-            "前端",
-            "框架",
-            "Svelte"
-        ]
-    },
-    {
-        "id": "2",
-        "title": "Tailwind CSS",
-        "description": "无需离开 HTML 即可快速构建现代网站，v4 带来了极致的构建速度。",
-        "url": "https://tailwindcss.com",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
-        "category": "前端生态",
-        "tags": [
-            "前端",
-            "CSS",
-            "原子化"
-        ]
-    },
-    {
-        "id": "7",
-        "title": "Naive UI",
-        "description": "一个 Vue 3 组件库，比较完整，主题可调，使用 TypeScript，快有点意思。",
-        "url": "https://www.naiveui.com/",
-        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.naiveui.com/",
-        "category": "前端生态",
-        "tags": [
-            "前端",
-            "Vue",
-            "UI 库"
-        ]
-    },
-    {
-        "id": "5",
-        "title": "Supabase",
-        "description": "开源的 Firebase 替代品，提供数据库、认证和存储服务。",
-        "url": "https://supabase.com",
-        "icon": "https://supabase.com/dashboard/img/supabase-logo.svg",
-        "category": "后端技术",
-        "tags": [
-            "后端",
-            "BaaS",
-            "PostgreSQL"
-        ]
-    },
-    {
-        "id": "9",
-        "title": "MyBatis-Plus Join",
-        "description": "MyBatis-Plus 多表联查插件，提供简便的 API 解决 MP 多表联查的痛点。",
-        "url": "https://mybatis-plus-join.github.io/",
-        "icon": "https://mybatis-plus-join.github.io/log.svg",
-        "category": "后端技术",
-        "tags": [
-            "后端",
-            "Java",
-            "MyBatis"
-        ]
-    },
-    {
-        "id": "4",
         "title": "Claude.ai",
         "description": "目前编程能力最强的 AI 助手，Vibe Coding 的最佳拍档。",
         "url": "https://claude.ai",
@@ -78,7 +13,7 @@
         ]
     },
     {
-        "id": "8",
+        "id": "2",
         "title": "OpenAI",
         "description": "致力于确保人工通用智能造福全人类的研究与部署公司，ChatGPT 的创造者。",
         "url": "https://openai.com/",
@@ -91,7 +26,7 @@
         ]
     },
     {
-        "id": "12",
+        "id": "3",
         "title": "Gemini",
         "description": "Google 最强大、通用的 AI 模型，旨在无缝理解和操作文本、代码、音频、图像和视频。",
         "url": "https://gemini.google.com/",
@@ -104,7 +39,20 @@
         ]
     },
     {
-        "id": "14",
+        "id": "4",
+        "title": "DeepSeek",
+        "description": "高性能国产开源大模型，专注代码生成与推理能力，深度求索。",
+        "url": "https://www.deepseek.com/",
+        "icon": "https://www.deepseek.com/favicon.ico",
+        "category": "人工智能",
+        "tags": [
+            "AI",
+            "LLM",
+            "开源"
+        ]
+    },
+    {
+        "id": "5",
         "title": "ModelScope",
         "description": "魔搭社区，汇集了行业领先的预训练模型，致力于降低 AI 开发门槛。",
         "url": "https://modelscope.cn/",
@@ -118,84 +66,6 @@
     },
     {
         "id": "6",
-        "title": "SkillHub",
-        "description": "AI 驱动的职业发展平台，连接技能与职业机会，提供个性化学习路径。",
-        "url": "https://www.skillhub.club/",
-        "icon": "https://www.skillhub.club/black_icon/SVG.svg",
-        "category": "效率工具",
-        "tags": [
-            "职业",
-            "AI",
-            "工具"
-        ]
-    },
-    {
-        "id": "3",
-        "title": "Lucide Icons",
-        "description": "美观、一致的开源图标库，本项目正在使用。",
-        "url": "https://lucide.dev",
-        "icon": "https://lucide.dev/logo.light.svg",
-        "category": "设计资源",
-        "tags": [
-            "图标",
-            "UI",
-            "开源"
-        ]
-    },
-    {
-        "id": "10",
-        "title": "IT Baima",
-        "description": "专注于大后端技术分享与实战教程，编程学习的优质资源站。",
-        "url": "https://www.itbaima.cn/",
-        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.itbaima.cn/",
-        "category": "学习媒体",
-        "tags": [
-            "教育",
-            "Java",
-            "教程"
-        ]
-    },
-    {
-        "id": "11",
-        "title": "YouTube",
-        "description": "全球最大的视频分享平台，拥有海量高质量的编程教程和技术分享。",
-        "url": "https://www.youtube.com/",
-        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.youtube.com/",
-        "category": "学习媒体",
-        "tags": [
-            "媒体",
-            "视频",
-            "学习"
-        ]
-    },
-    {
-        "id": "13",
-        "title": "GitHub",
-        "description": "全球最大的代码托管平台和开发者社区，开源项目的聚集地。",
-        "url": "https://github.com/",
-        "icon": "https://github.githubassets.com/favicons/favicon.svg",
-        "category": "开发平台",
-        "tags": [
-            "开源",
-            "Git",
-            "DevOps"
-        ]
-    },
-    {
-        "id": "15",
-        "title": "React",
-        "description": "用于构建用户界面的 JavaScript 库，组件化开发的先驱与事实标准。",
-        "url": "https://react.dev/",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
-        "category": "前端生态",
-        "tags": [
-            "前端",
-            "Library",
-            "Components"
-        ]
-    },
-    {
-        "id": "16",
         "title": "Spring Boot",
         "description": "基于 Spring 框架的快速应用开发工具，Java 后端开发的行业标准。",
         "url": "https://spring.io/projects/spring-boot",
@@ -208,59 +78,59 @@
         ]
     },
     {
-        "id": "17",
-        "title": "Figma",
-        "description": "领先的协作式界面设计工具，连接设计与开发的桥梁。",
-        "url": "https://www.figma.com/",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
-        "category": "设计资源",
+        "id": "7",
+        "title": "MyBatis-Plus Join",
+        "description": "MyBatis-Plus 多表联查插件，提供简便的 API 解决 MP 多表联查的痛点。",
+        "url": "https://mybatis-plus-join.github.io/",
+        "icon": "https://mybatis-plus-join.github.io/log.svg",
+        "category": "后端技术",
         "tags": [
-            "UI",
-            "设计",
-            "协作"
+            "后端",
+            "Java",
+            "MyBatis"
         ]
     },
     {
-        "id": "18",
-        "title": "MDN Web Docs",
-        "description": "Web 技术权威文档库，涵盖 HTML、CSS、JavaScript 及 API 参考。",
-        "url": "https://developer.mozilla.org/",
-        "icon": "https://developer.mozilla.org/favicon-48x48.png",
-        "category": "学习媒体",
+        "id": "8",
+        "title": "Supabase",
+        "description": "开源的 Firebase 替代品，提供数据库、认证和存储服务。",
+        "url": "https://supabase.com",
+        "icon": "https://supabase.com/dashboard/img/supabase-logo.svg",
+        "category": "后端技术",
         "tags": [
-            "文档",
-            "Web",
-            "权威"
+            "后端",
+            "BaaS",
+            "PostgreSQL"
         ]
     },
     {
-        "id": "19",
-        "title": "Stack Overflow",
-        "description": "全球最大的开发者问答社区，解决编程难题的第一站。",
-        "url": "https://stackoverflow.com/",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Stack_Overflow_icon.svg",
-        "category": "开发平台",
+        "id": "9",
+        "title": "PostgreSQL",
+        "description": "世界上最先进的开源关系型数据库，功能强大且标准兼容。",
+        "url": "https://www.postgresql.org/",
+        "icon": "https://www.postgresql.org/favicon.ico",
+        "category": "后端技术",
         "tags": [
-            "社区",
-            "Q&A",
-            "Debugging"
-        ]
-    },
-    {
-        "id": "20",
-        "title": "DeepSeek",
-        "description": "高性能国产开源大模型，专注代码生成与推理能力，深度求索。",
-        "url": "https://www.deepseek.com/",
-        "icon": "https://www.deepseek.com/favicon.ico",
-        "category": "人工智能",
-        "tags": [
-            "AI",
-            "LLM",
+            "数据库",
+            "SQL",
             "开源"
         ]
     },
     {
-        "id": "21",
+        "id": "10",
+        "title": "Redis",
+        "description": "开源的内存数据结构存储，可用作数据库、缓存和消息代理。",
+        "url": "https://redis.io/",
+        "icon": "https://redis.io/favicon.ico",
+        "category": "后端技术",
+        "tags": [
+            "缓存",
+            "NoSQL",
+            "内存数据库"
+        ]
+    },
+    {
+        "id": "11",
         "title": "Docker",
         "description": "领先的容器化平台，让开发环境与生产环境保持一致。",
         "url": "https://www.docker.com/",
@@ -273,33 +143,7 @@
         ]
     },
     {
-        "id": "22",
-        "title": "Vercel",
-        "description": "前端开发者的首选部署平台，提供极致的构建与 CDN 分发体验。",
-        "url": "https://vercel.com/",
-        "icon": "https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png",
-        "category": "开发平台",
-        "tags": [
-            "部署",
-            "CDN",
-            "Serverless"
-        ]
-    },
-    {
-        "id": "23",
-        "title": "TypeScript",
-        "description": "JavaScript 的超集，添加了静态类型系统，提升大型项目的开发体验。",
-        "url": "https://www.typescriptlang.org/",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
-        "category": "前端生态",
-        "tags": [
-            "JS",
-            "类型",
-            "语言"
-        ]
-    },
-    {
-        "id": "24",
+        "id": "12",
         "title": "Rust",
         "description": "一门赋予每个人构建可靠且高效软件能力的语言，内存安全且无 GC。",
         "url": "https://www.rust-lang.org/",
@@ -312,7 +156,254 @@
         ]
     },
     {
+        "id": "13",
+        "title": "Svelte",
+        "description": "控制论增强的 Web 应用框架，Svelte 5 引入了革命性的 Runes。",
+        "url": "https://svelte.dev",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg",
+        "category": "前端框架",
+        "tags": [
+            "前端",
+            "框架",
+            "Svelte"
+        ]
+    },
+    {
+        "id": "14",
+        "title": "React",
+        "description": "用于构建用户界面的 JavaScript 库，组件化开发的先驱与事实标准。",
+        "url": "https://react.dev/",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg",
+        "category": "前端框架",
+        "tags": [
+            "前端",
+            "Library",
+            "Components"
+        ]
+    },
+    {
+        "id": "15",
+        "title": "Vue.js",
+        "description": "渐进式 JavaScript 框架，易学易用，性能出色且功能丰富。",
+        "url": "https://vuejs.org/",
+        "icon": "https://vuejs.org/logo.svg",
+        "category": "前端框架",
+        "tags": [
+            "前端",
+            "框架",
+            "渐进式"
+        ]
+    },
+    {
+        "id": "16",
+        "title": "Next.js",
+        "description": "React 全栈框架，提供服务端渲染、静态生成等强大功能，Vercel 出品。",
+        "url": "https://nextjs.org/",
+        "icon": "https://nextjs.org/favicon.ico",
+        "category": "前端框架",
+        "tags": [
+            "React",
+            "SSR",
+            "全栈"
+        ]
+    },
+    {
+        "id": "17",
+        "title": "TypeScript",
+        "description": "JavaScript 的超集，添加了静态类型系统，提升大型项目的开发体验。",
+        "url": "https://www.typescriptlang.org/",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg",
+        "category": "前端框架",
+        "tags": [
+            "JS",
+            "类型",
+            "语言"
+        ]
+    },
+    {
+        "id": "18",
+        "title": "Vite",
+        "description": "下一代前端构建工具，极速的冷启动和热更新体验。",
+        "url": "https://vitejs.dev/",
+        "icon": "https://vitejs.dev/logo.svg",
+        "category": "前端框架",
+        "tags": [
+            "构建工具",
+            "开发体验",
+            "快速"
+        ]
+    },
+    {
+        "id": "19",
+        "title": "GitHub",
+        "description": "全球最大的代码托管平台和开发者社区，开源项目的聚集地。",
+        "url": "https://github.com/",
+        "icon": "https://github.githubassets.com/favicons/favicon.svg",
+        "category": "开发平台",
+        "tags": [
+            "开源",
+            "Git",
+            "DevOps"
+        ]
+    },
+    {
+        "id": "20",
+        "title": "Stack Overflow",
+        "description": "全球最大的开发者问答社区，解决编程难题的第一站。",
+        "url": "https://stackoverflow.com/",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Stack_Overflow_icon.svg",
+        "category": "开发平台",
+        "tags": [
+            "社区",
+            "Q&A",
+            "Debugging"
+        ]
+    },
+    {
+        "id": "21",
+        "title": "Vercel",
+        "description": "前端开发者的首选部署平台，提供极致的构建与 CDN 分发体验。",
+        "url": "https://vercel.com/",
+        "icon": "https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png",
+        "category": "开发平台",
+        "tags": [
+            "部署",
+            "CDN",
+            "Serverless"
+        ]
+    },
+    {
+        "id": "22",
+        "title": "Cloudflare",
+        "description": "全球领先的 CDN、DNS 与安全服务提供商，本项目推荐 domestic 加速方案。",
+        "url": "https://www.cloudflare.com/",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png",
+        "category": "开发平台",
+        "tags": [
+            "CDN",
+            "DNS",
+            "安全"
+        ]
+    },
+    {
+        "id": "23",
+        "title": "V2EX",
+        "description": "创意工作者的社区，讨论编程、设计、硬件、游戏等话题。",
+        "url": "https://www.v2ex.com/",
+        "icon": "https://www.v2ex.com/static/favicon.ico",
+        "category": "开发平台",
+        "tags": [
+            "社区",
+            "论坛",
+            "技术"
+        ]
+    },
+    {
+        "id": "24",
+        "title": "掘金",
+        "description": "中文技术社区，面向开发者的技术内容分享平台。",
+        "url": "https://juejin.cn/",
+        "icon": "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web/static/favicons/favicon-32x32.png",
+        "category": "开发平台",
+        "tags": [
+            "社区",
+            "中文",
+            "技术文章"
+        ]
+    },
+    {
         "id": "25",
+        "title": "npm",
+        "description": "Node.js 包管理器，全球最大的软件注册表。",
+        "url": "https://www.npmjs.com/",
+        "icon": "https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png",
+        "category": "开发平台",
+        "tags": [
+            "包管理",
+            "Node.js",
+            "JavaScript"
+        ]
+    },
+    {
+        "id": "26",
+        "title": "CodePen",
+        "description": "前端代码在线编辑器和社区，快速原型开发的理想选择。",
+        "url": "https://codepen.io/",
+        "icon": "https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico",
+        "category": "开发平台",
+        "tags": [
+            "在线编辑",
+            "前端",
+            "原型"
+        ]
+    },
+    {
+        "id": "27",
+        "title": "Tailwind CSS",
+        "description": "无需离开 HTML 即可快速构建现代网站，v4 带来了极致的构建速度。",
+        "url": "https://tailwindcss.com",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg",
+        "category": "设计资源",
+        "tags": [
+            "前端",
+            "CSS",
+            "原子化"
+        ]
+    },
+    {
+        "id": "28",
+        "title": "shadcn/ui",
+        "description": "精美设计的组件集合，可直接复制粘贴到项目中，基于 Radix UI 和 Tailwind CSS。",
+        "url": "https://ui.shadcn.com/",
+        "icon": "https://ui.shadcn.com/favicon.ico",
+        "category": "设计资源",
+        "tags": [
+            "React",
+            "组件",
+            "Tailwind"
+        ]
+    },
+    {
+        "id": "29",
+        "title": "Ant Design",
+        "description": "企业级 UI 设计语言和 React 组件库，阿里巴巴出品的设计系统。",
+        "url": "https://ant.design/",
+        "icon": "https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg",
+        "category": "设计资源",
+        "tags": [
+            "React",
+            "企业级",
+            "设计系统"
+        ]
+    },
+    {
+        "id": "30",
+        "title": "Naive UI",
+        "description": "一个 Vue 3 组件库，比较完整，主题可调，使用 TypeScript，快有点意思。",
+        "url": "https://www.naiveui.com/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.naiveui.com/",
+        "category": "设计资源",
+        "tags": [
+            "前端",
+            "Vue",
+            "UI 库"
+        ]
+    },
+    {
+        "id": "31",
+        "title": "Lucide Icons",
+        "description": "美观、一致的开源图标库，本项目正在使用。",
+        "url": "https://lucide.dev",
+        "icon": "https://lucide.dev/logo.light.svg",
+        "category": "设计资源",
+        "tags": [
+            "图标",
+            "UI",
+            "开源"
+        ]
+    },
+    {
+        "id": "32",
         "title": "Simple Icons",
         "description": "包含 3000+ 流行品牌的免费 SVG 图标，开发者的首选品牌图标库。",
         "url": "https://simpleicons.org/",
@@ -325,16 +416,198 @@
         ]
     },
     {
-        "id": "26",
-        "title": "Cloudflare",
-        "description": "全球领先的 CDN、DNS 与安全服务提供商，本项目推荐 domestic 加速方案。",
-        "url": "https://www.cloudflare.com/",
-        "icon": "https://upload.wikimedia.org/wikipedia/commons/9/94/Cloudflare_Logo.png",
-        "category": "开发平台",
+        "id": "33",
+        "title": "Figma",
+        "description": "领先的协作式界面设计工具，连接设计与开发的桥梁。",
+        "url": "https://www.figma.com/",
+        "icon": "https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg",
+        "category": "设计资源",
         "tags": [
-            "CDN",
-            "DNS",
-            "安全"
+            "UI",
+            "设计",
+            "协作"
+        ]
+    },
+    {
+        "id": "34",
+        "title": "Dribbble",
+        "description": "全球顶尖设计师作品展示平台，UI/UX 设计灵感的宝库。",
+        "url": "https://dribbble.com/",
+        "icon": "https://cdn.dribbble.com/assets/favicon-b38525134603b9513174ec887944bde1a869eb6cd414f4d640ee48ab2a15a26b.ico",
+        "category": "设计资源",
+        "tags": [
+            "设计",
+            "灵感",
+            "UI"
+        ]
+    },
+    {
+        "id": "35",
+        "title": "Unsplash",
+        "description": "免费高质量图片素材库，摄影师社区贡献的精美照片。",
+        "url": "https://unsplash.com/",
+        "icon": "https://unsplash.com/favicon.ico",
+        "category": "设计资源",
+        "tags": [
+            "图片",
+            "素材",
+            "免费"
+        ]
+    },
+    {
+        "id": "36",
+        "title": "FastConvert",
+        "description": "快速、免费的在线文件格式转换工具，支持图片、视频、文档等多种格式互转。",
+        "url": "https://fastconvert.co",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://fastconvert.co",
+        "category": "效率工具",
+        "tags": [
+            "转换",
+            "工具",
+            "在线"
+        ]
+    },
+    {
+        "id": "37",
+        "title": "Regex101",
+        "description": "强大的正则表达式在线测试与学习工具，支持多种语言。",
+        "url": "https://regex101.com/",
+        "icon": "https://regex101.com/favicon.ico",
+        "category": "效率工具",
+        "tags": [
+            "正则",
+            "测试",
+            "学习"
+        ]
+    },
+    {
+        "id": "38",
+        "title": "JSON Formatter",
+        "description": "在线 JSON 格式化、验证和美化工具，支持树形视图。",
+        "url": "https://jsonformatter.org/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://jsonformatter.org/",
+        "category": "效率工具",
+        "tags": [
+            "JSON",
+            "格式化",
+            "工具"
+        ]
+    },
+    {
+        "id": "39",
+        "title": "Apifox",
+        "description": "API 一体化协作平台，集 API 文档、调试、Mock、自动化测试于一体。",
+        "url": "https://apifox.com/",
+        "icon": "https://cdn.apifox.cn/logo/apifox-logo-64.png",
+        "category": "效率工具",
+        "tags": [
+            "API",
+            "测试",
+            "文档"
+        ]
+    },
+    {
+        "id": "40",
+        "title": "IP.CN",
+        "description": "简洁的 IP 地址查询工具，快速查看本机 IP、归属地及网络信息。",
+        "url": "https://ip.cn/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://ip.cn/",
+        "category": "效率工具",
+        "tags": [
+            "IP",
+            "查询",
+            "网络"
+        ]
+    },
+    {
+        "id": "41",
+        "title": "Ping0",
+        "description": "专业的网络测速与延迟检测工具，支持全球多节点 Ping 测试。",
+        "url": "https://ping0.cc/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://ping0.cc/",
+        "category": "效率工具",
+        "tags": [
+            "Ping",
+            "测速",
+            "网络"
+        ]
+    },
+    {
+        "id": "42",
+        "title": "SkillHub",
+        "description": "AI 驱动的职业发展平台，连接技能与职业机会，提供个性化学习路径。",
+        "url": "https://www.skillhub.club/",
+        "icon": "https://www.skillhub.club/black_icon/SVG.svg",
+        "category": "效率工具",
+        "tags": [
+            "职业",
+            "AI",
+            "工具"
+        ]
+    },
+    {
+        "id": "43",
+        "title": "IT Baima",
+        "description": "专注于大后端技术分享与实战教程，编程学习的优质资源站。",
+        "url": "https://www.itbaima.cn/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.itbaima.cn/",
+        "category": "学习媒体",
+        "tags": [
+            "教育",
+            "Java",
+            "教程"
+        ]
+    },
+    {
+        "id": "44",
+        "title": "MDN Web Docs",
+        "description": "Web 技术权威文档库，涵盖 HTML、CSS、JavaScript 及 API 参考。",
+        "url": "https://developer.mozilla.org/",
+        "icon": "https://developer.mozilla.org/favicon-48x48.png",
+        "category": "学习媒体",
+        "tags": [
+            "文档",
+            "Web",
+            "权威"
+        ]
+    },
+    {
+        "id": "45",
+        "title": "YouTube",
+        "description": "全球最大的视频分享平台，拥有海量高质量的编程教程和技术分享。",
+        "url": "https://www.youtube.com/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.youtube.com/",
+        "category": "学习媒体",
+        "tags": [
+            "媒体",
+            "视频",
+            "学习"
+        ]
+    },
+    {
+        "id": "46",
+        "title": "犬小哈的技术博客",
+        "description": "专注于 Java 后端、微服务架构与实战经验分享的个人技术博客。",
+        "url": "https://www.quanxiaoha.com",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.quanxiaoha.com",
+        "category": "技术博客",
+        "tags": [
+            "Java",
+            "后端",
+            "博客"
+        ]
+    },
+    {
+        "id": "47",
+        "title": "猫哥的技术博客",
+        "description": "Flutter、Dart 与跨平台开发的深度教程与实战案例分享。",
+        "url": "https://ducafecat.com/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://ducafecat.com/",
+        "category": "技术博客",
+        "tags": [
+            "Flutter",
+            "移动端",
+            "博客"
         ]
     }
 ]

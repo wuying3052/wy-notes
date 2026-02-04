@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Search, ExternalLink, Sparkles, FolderOpen, X, ChevronRight } from 'lucide-svelte';
+	import { onMount } from 'svelte';
 
 	let { data } = $props();
 
@@ -30,12 +31,7 @@
 	let filteredResources = $derived(
 		resources
 			.map((section) => {
-				// 1. 分类筛选
-				if (activeCategory !== '全部' && section.category !== activeCategory) {
-					return null;
-				}
-
-				// 2. 搜索关键词筛选
+				// 搜索关键词筛选
 				const q = searchQuery.toLowerCase();
 				const filteredItems = section.items.filter(
 					(item) =>
@@ -50,6 +46,68 @@
 			})
 			.filter((section): section is ResourceSection => Boolean(section))
 	);
+
+	/**
+	 * 滚动到指定分类
+	 */
+	function scrollToCategory(category: string) {
+		if (category === '全部') {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+			activeCategory = '全部';
+			return;
+		}
+
+		const sectionId = `category-${category}`;
+		const element = document.getElementById(sectionId);
+		if (element) {
+			const offset = 100; // 顶部偏移量
+			const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+			const offsetPosition = elementPosition - offset;
+
+			window.scrollTo({
+				top: offsetPosition,
+				behavior: 'smooth'
+			});
+		}
+		activeCategory = category;
+	}
+
+	/**
+	 * 监听滚动，更新当前激活的分类
+	 */
+	onMount(() => {
+		const handleScroll = () => {
+			if (searchQuery) return; // 搜索时不自动更新分类
+
+			const sections = resources
+				.map((section) => {
+					const element = document.getElementById(`category-${section.category}`);
+					if (!element) return null;
+
+					const rect = element.getBoundingClientRect();
+					return {
+						category: section.category,
+						top: rect.top,
+						bottom: rect.bottom
+					};
+				})
+				.filter(Boolean);
+
+			// 找到当前视口中最靠近顶部的分类
+			const current = sections.find(
+				(section) => section && section.top <= 200 && section.bottom > 0
+			);
+
+			if (current) {
+				activeCategory = current.category;
+			} else if (window.scrollY < 200) {
+				activeCategory = '全部';
+			}
+		};
+
+		window.addEventListener('scroll', handleScroll, { passive: true });
+		return () => window.removeEventListener('scroll', handleScroll);
+	});
 
 	/**
 	 * 检测元素文字是否溢出的 Action
@@ -148,7 +206,7 @@
 					<div class="flex gap-2">
 						{#each categories as cat}
 							<button
-								onclick={() => (activeCategory = cat)}
+								onclick={() => scrollToCategory(cat)}
 								class="whitespace-nowrap px-4 py-2 rounded-full text-sm font-bold border transition-all duration-200 {activeCategory ===
 								cat
 									? 'bg-slate-900 text-white border-slate-900 shadow-lg shadow-slate-900/20'
@@ -164,7 +222,7 @@
 				<div class="space-y-12">
 					{#if filteredResources.length > 0}
 						{#each filteredResources as section (section.category)}
-							<section>
+							<section id="category-{section.category}">
 								<div class="flex items-center gap-3 mb-5 group/title">
 									<h2 class="text-xl font-bold text-slate-900 flex items-center gap-2">
 										<span class="bg-indigo-600 w-1 h-5 rounded-full"></span>
@@ -183,13 +241,8 @@
 											href={item.url}
 											target="_blank"
 											rel="external noopener noreferrer"
-											class="group flex flex-col p-6 bg-white rounded-2xl border border-slate-200/80 transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.06)] hover:-translate-y-1.5 hover:border-indigo-500/30 hover:z-20 h-full relative"
+											class="group flex flex-col p-6 bg-white rounded-2xl border border-slate-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-full"
 										>
-											<!-- 卡片顶部装饰线条 -->
-											<div
-												class="absolute top-0 left-0 right-0 h-0.5 rounded-t-xl bg-gradient-to-r from-transparent via-indigo-500/0 to-transparent group-hover:via-indigo-500/50 transition-all duration-500"
-											></div>
-
 											<div class="flex items-start gap-4 mb-4">
 												<!-- 左侧图标 -->
 												<div class="shrink-0 relative mt-0.5">
@@ -306,7 +359,7 @@
 							cat
 								? 'text-indigo-600 bg-indigo-50/50'
 								: 'text-slate-500 hover:bg-slate-50 hover:text-slate-900'}"
-							onclick={() => (activeCategory = cat)}
+							onclick={() => scrollToCategory(cat)}
 						>
 							{#if activeCategory === cat}
 								<div
