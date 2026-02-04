@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: YOUR_VERCEL_URL/sitemap.xml
