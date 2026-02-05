@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { SITE_CONFIG } from '$lib/config/site';
 	import favicon from '$lib/assets/svg/logo.svg';
 	import wyNotesLogo from '$lib/assets/image/wy-notes-logo.webp';
@@ -9,7 +9,7 @@
 	import BackToTop from '$lib/components/ui/BackToTop.svelte';
 	import '../app.css';
 	let { children } = $props();
-	let showLayout = $derived($page.status < 400);
+	let showLayout = $derived(page.status < 400);
 </script>
 
 <svelte:head>

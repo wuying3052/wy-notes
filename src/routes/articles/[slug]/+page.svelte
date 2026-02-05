@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import { Calendar, ChevronLeft, PanelRightOpen } from 'lucide-svelte';
 	import type { PageData } from './$types';
 	import TableOfContents from '$lib/components/articles/TableOfContents.svelte';
+	import { SITE_CONFIG } from '$lib/config/site';
 
 	// 导入样式
 	import '@styles/code.css';
@@ -11,6 +13,14 @@
 
 	let { data }: { data: PageData } = $props();
 	let { content: Content, meta } = $derived(data);
+
+	// 构建完整的文章 URL 和 OG 图片 URL
+	let articleUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(
+		meta.cover?.startsWith('http')
+			? meta.cover
+			: `${SITE_CONFIG.url}${meta.cover || '/og-image.png'}`
+	);
 
 	let articleElement = $state<HTMLElement | null>(null);
 	let tocItems = $state<{ id: string; text: string; depth: number }[]>([]);
@@ -58,10 +68,20 @@
 <svelte:head>
 	<title>{meta.title} | WY NOTES</title>
 	<meta name="description" content={meta.description || meta.title} />
+
+	<!-- Open Graph / 社交分享 -->
 	<meta property="og:type" content="article" />
+	<meta property="og:url" content={articleUrl} />
 	<meta property="og:title" content={meta.title} />
 	<meta property="og:description" content={meta.description || meta.title} />
+	<meta property="og:image" content={ogImage} />
+
+	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={articleUrl} />
+	<meta property="twitter:title" content={meta.title} />
+	<meta property="twitter:description" content={meta.description || meta.title} />
+	<meta property="twitter:image" content={ogImage} />
 </svelte:head>
 
 <div class="min-h-screen pb-20 bg-[#f8fafc]">
