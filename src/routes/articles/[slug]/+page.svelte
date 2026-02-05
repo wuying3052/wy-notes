@@ -87,6 +87,11 @@
 <div class="min-h-screen pb-20 bg-[#f8fafc]">
 	<!-- 封面区域 -->
 	<div class="relative h-[55vh] w-full overflow-hidden">
+		<!-- 微信分享预览图兜底 (放在页面最前面提高抓取权重) -->
+		<div style="display:none;">
+			<img src={ogImage} alt="Preview" />
+		</div>
+
 		<div class="absolute inset-0 bg-slate-900/40 z-10 backdrop-blur-[2px]"></div>
 		{#if meta.cover}
 			<img

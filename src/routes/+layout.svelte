@@ -36,6 +36,11 @@
 </svelte:head>
 
 <div class="min-h-screen flex flex-col relative animated-bg">
+	<!-- 微信分享图片兜底 -->
+	<div style="display:none;">
+		<img src={SITE_CONFIG.ogImage} alt="Preview" />
+	</div>
+
 	{#if showLayout}
 		<SiteHeader logoSrc={wyNotesLogo} siteName="WY NOTES" />
 
