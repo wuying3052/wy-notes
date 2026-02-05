@@ -1,10 +1,10 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { ArrowRight, Sparkles, BookText, Briefcase, Compass } from 'lucide-svelte';
-	import { Layers, Zap, Palette, Component, FileJson, Server } from 'lucide-svelte';
-	import { fly, fade } from 'svelte/transition';
-	import { onMount } from 'svelte';
+	import { Layers, Zap, Palette, Component, FileBraces, Server } from 'lucide-svelte';
+	import { fly } from 'svelte/transition';
 	import ArticleCard from '$lib/components/articles/ArticleCard.svelte';
+	import { SITE_CONFIG } from '$lib/config/site';
 	import Reveal from '$lib/components/ui/Reveal.svelte';
 	import TiltCard from '$lib/components/ui/TiltCard.svelte';
 	import { Button } from '$lib/components/ui/button';
@@ -14,7 +14,7 @@
 	let { recentPosts, projects } = $derived(data);
 	let ready = $state(false);
 
-	onMount(() => {
+	$effect(() => {
 		ready = true;
 	});
 
@@ -54,7 +54,7 @@
 		{
 			name: 'Markdown',
 			desc: '内容解析',
-			icon: FileJson,
+			icon: FileBraces,
 			bg: 'bg-yellow-50',
 			color: 'text-yellow-600',
 			border: 'border-yellow-100'
@@ -71,6 +71,7 @@
 </script>
 
 <svelte:head>
+	<title>{SITE_CONFIG.title}</title>
 	<style>
 		:root {
 			--spotlight-color: 24, 24, 27; /* Slate-900 */

@@ -2,6 +2,8 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { Search } from 'lucide-svelte';
+	import { fly, fade, scale } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import ArticleCard from '$lib/components/articles/ArticleCard.svelte';
 	import { SITE_CONFIG } from '$lib/config/site';
 	let { data } = $props();
@@ -77,12 +79,12 @@
 <div class="max-w-7xl mx-auto px-4 py-12">
 	<header class="mb-12 space-y-8">
 		<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-			<div>
+			<div in:fly={{ y: -20, duration: 600, delay: 100 }}>
 				<h1 class="text-4xl font-bold text-slate-900 mb-2">精选文章</h1>
 				<p class="text-lg text-slate-500">探索技术见解与设计灵感。</p>
 			</div>
 
-			<div class="relative w-full md:w-72">
+			<div class="relative w-full md:w-72" in:fly={{ x: 20, duration: 600, delay: 200 }}>
 				<Search class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
 				<input
 					type="text"
@@ -94,8 +96,9 @@
 		</div>
 
 		<div class="flex flex-wrap items-center gap-3">
-			{#each categories as cat (cat)}
+			{#each categories as cat, i (cat)}
 				<button
+					in:scale={{ duration: 400, delay: 300 + i * 50, start: 0.8 }}
 					class="px-5 py-2 rounded-full text-sm font-bold transition-all border"
 					class:bg-brand={activeCategory === cat}
 					class:text-white={activeCategory === cat}
@@ -133,7 +136,13 @@
 		{:else}
 			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 				{#each filteredArticles as article (article.id)}
-					<ArticleCard {article} />
+					<div
+						animate:flip={{ duration: 400 }}
+						in:fly={{ y: 20, duration: 400 }}
+						out:fade={{ duration: 200 }}
+					>
+						<ArticleCard {article} />
+					</div>
 				{/each}
 			</div>
 		{/if}

@@ -433,7 +433,7 @@
         "title": "Dribbble",
         "description": "全球顶尖设计师作品展示平台，UI/UX 设计灵感的宝库。",
         "url": "https://dribbble.com/",
-        "icon": "https://cdn.dribbble.com/assets/favicon-b38525134603b9513174ec887944bde1a869eb6cd414f4d640ee48ab2a15a26b.ico",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://dribbble.com/",
         "category": "设计资源",
         "tags": [
             "设计",
@@ -608,6 +608,45 @@
             "Flutter",
             "移动端",
             "博客"
+        ]
+    },
+    {
+        "id": "48",
+        "title": "Joy of Code",
+        "description": "优质的 Web 开发技术博客，以 Svelte、React 和 CSS 教程著称，内容极具深度。",
+        "url": "https://joyofcode.xyz/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://joyofcode.xyz/",
+        "category": "技术博客",
+        "tags": [
+            "Svelte",
+            "Web",
+            "博客"
+        ]
+    },
+    {
+        "id": "49",
+        "title": "极客简报 (Polebrief)",
+        "description": "专业且免费的在线简历制作平台，提供简洁且受 HR 欢迎的多种模板，支持一键导出。",
+        "url": "https://www.polebrief.com/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://www.polebrief.com/",
+        "category": "效率工具",
+        "tags": [
+            "简历",
+            "工具",
+            "求职"
+        ]
+    },
+    {
+        "id": "50",
+        "title": "小林coding",
+        "description": "全栈图解！专注于计算机网络、操作系统、数据库和算法的深度解析，大厂面试必备利器。",
+        "url": "https://xiaolincoding.com/",
+        "icon": "https://www.google.com/s2/favicons?sz=64&domain_url=https://xiaolincoding.com/",
+        "category": "学习媒体",
+        "tags": [
+            "图解",
+            "CS 基础",
+            "面试"
         ]
     }
 ]

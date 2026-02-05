@@ -1,25 +1,34 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { Github, Sparkles, BookText, Briefcase, Compass } from 'lucide-svelte';
+	import { fly, fade, scale } from 'svelte/transition';
 </script>
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
 	<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
 		<div>
 			<div
+				in:scale={{ duration: 500, delay: 100, start: 0.8 }}
 				class="inline-flex items-center gap-2 rounded-full bg-brand/10 text-brand text-xs font-bold px-3 py-1 border border-brand/20"
 			>
 				<Sparkles size={14} />
 				<span>关于本站</span>
 			</div>
-			<h1 class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900">
+			<h1
+				class="mt-4 text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900"
+				in:fly={{ y: -20, duration: 600, delay: 200 }}
+			>
 				WY Notes
 			</h1>
-			<p class="mt-2 text-base sm:text-lg text-slate-600 max-w-2xl">
+			<p
+				class="mt-2 text-base sm:text-lg text-slate-600 max-w-2xl"
+				in:fade={{ duration: 600, delay: 300 }}
+			>
 				一个用于归档文章、项目与资源的极简站点：优先信息结构、统一交互与可访问性。
 			</p>
 		</div>
 		<a
+			in:scale={{ duration: 400, delay: 400, start: 0.8 }}
 			href="https://github.com"
 			target="_blank"
 			rel="noreferrer"

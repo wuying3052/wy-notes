@@ -9,18 +9,31 @@
 
 	const tiltX = spring(0, { stiffness: 0.1, damping: 0.25 });
 	const tiltY = spring(0, { stiffness: 0.1, damping: 0.25 });
+	let rafId = $state<number | null>(null);
 
 	function handleMouseMove(e: MouseEvent) {
-		const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-		const x = e.clientX - rect.left;
-		const y = e.clientY - rect.top;
-		const centerX = rect.width / 2;
-		const centerY = rect.height / 2;
-		tiltX.set((y - centerY) / 20);
-		tiltY.set(-(x - centerX) / 20);
+		// 取消之前的动画帧请求，实现防抖
+		if (rafId !== null) {
+			cancelAnimationFrame(rafId);
+		}
+
+		rafId = requestAnimationFrame(() => {
+			const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
+			const centerX = rect.width / 2;
+			const centerY = rect.height / 2;
+			tiltX.set((y - centerY) / 20);
+			tiltY.set(-(x - centerX) / 20);
+		});
 	}
 
 	function handleMouseLeave() {
+		// 清理未完成的动画帧
+		if (rafId !== null) {
+			cancelAnimationFrame(rafId);
+			rafId = null;
+		}
 		tiltX.set(0);
 		tiltY.set(0);
 	}

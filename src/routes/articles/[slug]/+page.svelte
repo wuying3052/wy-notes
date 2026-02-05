@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
-	import { onMount } from 'svelte';
 	import { Calendar, ChevronLeft, PanelRightOpen } from 'lucide-svelte';
+	import { fade, fly } from 'svelte/transition';
 	import type { PageData } from './$types';
 	import TableOfContents from '$lib/components/articles/TableOfContents.svelte';
 	import { SITE_CONFIG } from '$lib/config/site';
@@ -39,29 +39,34 @@
 	});
 
 	// 复制按钮功能
-	onMount(() => {
+	$effect(() => {
 		const copyButtons = document.querySelectorAll('.copy-btn');
 
-		copyButtons.forEach((btn) => {
-			btn.addEventListener('click', async () => {
-				const codeTitle = btn.closest('.rehype-code-title');
-				const preBlock = codeTitle?.nextElementSibling;
-				const code = preBlock?.querySelector('code')?.textContent || '';
+		const handleClick = async (e: Event) => {
+			const btn = e.target as HTMLElement;
+			const codeTitle = btn.closest('.rehype-code-title');
+			const preBlock = codeTitle?.nextElementSibling;
+			const code = preBlock?.querySelector('code')?.textContent || '';
 
-				try {
-					await navigator.clipboard.writeText(code);
-					btn.textContent = 'Copied!';
-					btn.classList.add('copied');
+			try {
+				await navigator.clipboard.writeText(code);
+				btn.textContent = 'Copied!';
+				btn.classList.add('copied');
 
-					setTimeout(() => {
-						btn.textContent = 'Copy';
-						btn.classList.remove('copied');
-					}, 2000);
-				} catch (err) {
-					console.error('Failed to copy:', err);
-				}
-			});
-		});
+				setTimeout(() => {
+					btn.textContent = 'Copy';
+					btn.classList.remove('copied');
+				}, 2000);
+			} catch (err) {
+				console.error('Failed to copy:', err);
+			}
+		};
+
+		copyButtons.forEach((btn) => btn.addEventListener('click', handleClick));
+
+		return () => {
+			copyButtons.forEach((btn) => btn.removeEventListener('click', handleClick));
+		};
 	});
 </script>
 
@@ -87,7 +92,7 @@
 <div class="min-h-screen pb-20 bg-[#f8fafc]">
 	<!-- 封面区域 -->
 	<div class="relative h-[55vh] w-full overflow-hidden">
-		<!-- 微信分享预览图兜底 (放在页面最前面提高抓取权重) -->
+		<!-- 微信分享预览图兜底-->
 		<div style="display:none;">
 			<img src={ogImage} alt="Preview" />
 		</div>
@@ -95,6 +100,7 @@
 		<div class="absolute inset-0 bg-slate-900/40 z-10 backdrop-blur-[2px]"></div>
 		{#if meta.cover}
 			<img
+				in:fade={{ duration: 800 }}
 				src={meta.cover}
 				alt={meta.title}
 				class="absolute inset-0 w-full h-full object-cover scale-105 transition-transform duration-700"
@@ -145,6 +151,7 @@
 			<div class="flex flex-col lg:flex-row gap-8 items-start relative">
 				<!-- 文章正文 -->
 				<div
+					in:fly={{ y: 30, duration: 600, delay: 200 }}
 					class="bg-white rounded-[2.5rem] shadow-xl shadow-slate-200/50 p-6 md:p-16 border border-slate-100 transition-all duration-300
 					{isTocCollapsed ? 'w-full' : 'w-full xl:w-[calc(100%-320px)]'}"
 				>

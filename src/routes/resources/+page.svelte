@@ -1,27 +1,16 @@
 <script lang="ts">
 	import { Search, ExternalLink, Sparkles, FolderOpen, X, ChevronRight } from 'lucide-svelte';
-	import { onMount } from 'svelte';
 	import { page } from '$app/state';
+	import { fly, fade, scale } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import { SITE_CONFIG } from '$lib/config/site';
+	import type { ResourceSection } from '$lib/types/resources';
 
 	let { data } = $props();
 
 	// 构建完整的页面 URL 和 OG 图片 URL
 	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
 	let ogImage = $derived(`${SITE_CONFIG.url}/og-image.png`);
-
-	type ResourceItem = {
-		title: string;
-		desc: string;
-		url: string;
-		icon: string;
-		tags: string[];
-	};
-
-	type ResourceSection = {
-		category: string;
-		items: ResourceItem[];
-	};
 
 	// 获取资源数据
 	let { resources = [] } = $derived(data as { resources?: ResourceSection[] });
@@ -81,7 +70,7 @@
 	/**
 	 * 监听滚动，更新当前激活的分类
 	 */
-	onMount(() => {
+	$effect(() => {
 		const handleScroll = () => {
 			if (searchQuery) return; // 搜索时不自动更新分类
 
@@ -176,7 +165,10 @@
 		<div class="max-w-[1440px] mx-auto px-6 pt-8 pb-4">
 			<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
 				<!-- 左侧：搜索框 -->
-				<div class="relative group w-full md:w-80 lg:w-96 shrink-0 mb-4 md:mb-0">
+				<div
+					in:fly={{ x: -20, duration: 600, delay: 100 }}
+					class="relative group w-full md:w-80 lg:w-96 shrink-0 mb-4 md:mb-0"
+				>
 					<div
 						class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-indigo-600 transition-colors duration-300"
 					>
@@ -202,7 +194,10 @@
 				</div>
 
 				<!-- 右侧：标题与简介 -->
-				<div class="max-w-3xl flex flex-col items-start md:items-end text-left md:text-right">
+				<div
+					in:fly={{ y: -20, duration: 600, delay: 200 }}
+					class="max-w-3xl flex flex-col items-start md:items-end text-left md:text-right"
+				>
 					<div
 						class="inline-flex items-center gap-1.5 text-slate-500 text-[10px] font-bold mb-2 uppercase tracking-widest"
 					>
@@ -263,82 +258,88 @@
 
 								<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 									{#each section.items as item (item.url)}
-										<a
-											href={item.url}
-											target="_blank"
-											rel="external noopener noreferrer"
-											class="group flex flex-col p-6 bg-white rounded-2xl border border-slate-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-full"
+										<div
+											animate:flip={{ duration: 400 }}
+											in:scale={{ duration: 300, start: 0.9 }}
+											out:fade={{ duration: 200 }}
 										>
-											<div class="flex items-start gap-4 mb-4">
-												<!-- 左侧图标 -->
-												<div class="shrink-0 relative mt-0.5">
-													{#if item.icon}
-														<div
-															class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center p-2 group-hover:bg-white group-hover:shadow-sm transition-all"
-														>
-															<img
-																src={item.icon}
-																alt={item.title}
-																class="w-full h-full object-contain"
-															/>
-														</div>
-													{:else}
-														<div
-															class="w-14 h-14 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
-														>
-															<FolderOpen size={28} />
-														</div>
-													{/if}
-												</div>
-
-												<!-- 右侧内容 -->
-												<div class="flex-1 min-w-0">
-													<div class="flex items-start justify-between gap-2 mb-1">
-														<h3
-															class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 leading-snug"
-														>
-															{item.title}
-														</h3>
-														<div
-															class="shrink-0 text-slate-300 group-hover:text-indigo-500 transition-colors duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 pt-0.5"
-														>
-															<ExternalLink size={14} />
-														</div>
-													</div>
-
-													<!-- 描述文本带 Tooltip -->
-													<div class="relative group/desc">
-														<p
-															use:monitorTruncation
-															class="text-[13px] text-slate-500 line-clamp-2 leading-[21px] h-[42px] group-[.has-overflow]/desc:cursor-help"
-														>
-															{item.desc}
-														</p>
-
-														<!-- 自定义提示框：仅当文字溢出且悬停时显示 -->
-														<div
-															class="absolute left-[105%] top-0 w-60 bg-white text-slate-600 text-[11px] leading-relaxed p-3 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible -translate-x-2 scale-95 group-[.has-overflow]/desc:group-hover/desc:opacity-100 group-[.has-overflow]/desc:group-hover/desc:visible group-[.has-overflow]/desc:group-hover/desc:translate-x-0 group-[.has-overflow]/desc:group-hover/desc:scale-100 transition-all duration-300 delay-500 z-50 pointer-events-none border border-slate-100 origin-left select-none"
-														>
-															{item.desc}
-															<!-- 箭头 -->
+											<a
+												href={item.url}
+												target="_blank"
+												rel="external noopener noreferrer"
+												class="group flex flex-col p-6 bg-white rounded-2xl border border-slate-200 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-indigo-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 h-full"
+											>
+												<div class="flex items-start gap-4 mb-4">
+													<!-- 左侧图标 -->
+													<div class="shrink-0 relative mt-0.5">
+														{#if item.icon}
 															<div
-																class="absolute top-3 -left-1.5 w-3 h-3 bg-white border-l border-b border-slate-100 rotate-45"
-															></div>
+																class="w-14 h-14 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center p-2 group-hover:bg-white group-hover:shadow-sm transition-all"
+															>
+																<img
+																	src={item.icon}
+																	alt={item.title}
+																	class="w-full h-full object-contain"
+																/>
+															</div>
+														{:else}
+															<div
+																class="w-14 h-14 rounded-xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300"
+															>
+																<FolderOpen size={28} />
+															</div>
+														{/if}
+													</div>
+
+													<!-- 右侧内容 -->
+													<div class="flex-1 min-w-0">
+														<div class="flex items-start justify-between gap-2 mb-1">
+															<h3
+																class="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-1 leading-snug"
+															>
+																{item.title}
+															</h3>
+															<div
+																class="shrink-0 text-slate-300 group-hover:text-indigo-500 transition-colors duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 pt-0.5"
+															>
+																<ExternalLink size={14} />
+															</div>
+														</div>
+
+														<!-- 描述文本带 Tooltip -->
+														<div class="relative group/desc">
+															<p
+																use:monitorTruncation
+																class="text-[13px] text-slate-500 line-clamp-2 leading-[21px] h-[42px] group-[.has-overflow]/desc:cursor-help"
+															>
+																{item.desc}
+															</p>
+
+															<!-- 自定义提示框：仅当文字溢出且悬停时显示 -->
+															<div
+																class="absolute left-[105%] top-0 w-60 bg-white text-slate-600 text-[11px] leading-relaxed p-3 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible -translate-x-2 scale-95 group-[.has-overflow]/desc:group-hover/desc:opacity-100 group-[.has-overflow]/desc:group-hover/desc:visible group-[.has-overflow]/desc:group-hover/desc:translate-x-0 group-[.has-overflow]/desc:group-hover/desc:scale-100 transition-all duration-300 delay-500 z-50 pointer-events-none border border-slate-100 origin-left select-none"
+															>
+																{item.desc}
+																<!-- 箭头 -->
+																<div
+																	class="absolute top-3 -left-1.5 w-3 h-3 bg-white border-l border-b border-slate-100 rotate-45"
+																></div>
+															</div>
 														</div>
 													</div>
 												</div>
-											</div>
 
-											<div class="flex flex-wrap gap-2 mt-auto pt-3 border-t border-slate-50">
-												{#each item.tags as tag}
-													<span
-														class="inline-flex items-center text-xs font-medium text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-md group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors"
-													>
-														{tag}
-													</span>
-												{/each}
-											</div>
-										</a>
+												<div class="flex flex-wrap gap-2 mt-auto pt-3 border-t border-slate-50">
+													{#each item.tags as tag}
+														<span
+															class="inline-flex items-center text-xs font-medium text-slate-500 bg-slate-100/80 px-2.5 py-1 rounded-md group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors"
+														>
+															{tag}
+														</span>
+													{/each}
+												</div>
+											</a>
+										</div>
 									{/each}
 								</div>
 							</section>
