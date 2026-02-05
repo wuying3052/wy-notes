@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { Search, ExternalLink, Sparkles, FolderOpen, X, ChevronRight } from 'lucide-svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/state';
+	import { SITE_CONFIG } from '$lib/config/site';
 
 	let { data } = $props();
+
+	// 构建完整的页面 URL 和 OG 图片 URL
+	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(`${SITE_CONFIG.url}/og-image.png`);
 
 	type ResourceItem = {
 		title: string;
@@ -142,6 +148,26 @@
 <svelte:head>
 	<title>工具与灵感 | WY NOTES</title>
 	<meta name="description" content="收藏优质的开发工具、设计灵感和技术资源，提升开发效率。" />
+
+	<!-- Open Graph / 社交分享 -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
+	<meta property="og:title" content="工具与灵感 | WY NOTES" />
+	<meta
+		property="og:description"
+		content="收藏优质的开发工具、设计灵感和技术资源，提升开发效率。"
+	/>
+	<meta property="og:image" content={ogImage} />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={pageUrl} />
+	<meta property="twitter:title" content="工具与灵感 | WY NOTES" />
+	<meta
+		property="twitter:description"
+		content="收藏优质的开发工具、设计灵感和技术资源，提升开发效率。"
+	/>
+	<meta property="twitter:image" content={ogImage} />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col bg-slate-50/50">

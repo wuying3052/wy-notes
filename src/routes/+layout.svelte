@@ -22,14 +22,14 @@
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content={SITE_CONFIG.url} />
+	<meta property="og:url" content={`${SITE_CONFIG.url}${page.url.pathname}`} />
 	<meta property="og:title" content={SITE_CONFIG.title} />
 	<meta property="og:description" content={SITE_CONFIG.description} />
 	<meta property="og:image" content={SITE_CONFIG.ogImage} />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={SITE_CONFIG.url} />
+	<meta property="twitter:url" content={`${SITE_CONFIG.url}${page.url.pathname}`} />
 	<meta property="twitter:title" content={SITE_CONFIG.title} />
 	<meta property="twitter:description" content={SITE_CONFIG.description} />
 	<meta property="twitter:image" content={SITE_CONFIG.ogImage} />

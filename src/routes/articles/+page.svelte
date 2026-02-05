@@ -1,8 +1,14 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { Search } from 'lucide-svelte';
 	import ArticleCard from '$lib/components/articles/ArticleCard.svelte';
+	import { SITE_CONFIG } from '$lib/config/site';
 	let { data } = $props();
+
+	// 构建完整的页面 URL 和 OG 图片 URL
+	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(`${SITE_CONFIG.url}/og-image.png`);
 
 	type ArticleItem = {
 		id: string;
@@ -46,6 +52,26 @@
 		name="description"
 		content="浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。"
 	/>
+
+	<!-- Open Graph / 社交分享 -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
+	<meta property="og:title" content="精选文章 | WY NOTES" />
+	<meta
+		property="og:description"
+		content="浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。"
+	/>
+	<meta property="og:image" content={ogImage} />
+
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={pageUrl} />
+	<meta property="twitter:title" content="精选文章 | WY NOTES" />
+	<meta
+		property="twitter:description"
+		content="浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。"
+	/>
+	<meta property="twitter:image" content={ogImage} />
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-4 py-12">
