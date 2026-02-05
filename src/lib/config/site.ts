@@ -9,7 +9,7 @@ export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://localhost:51
 // 网站基本信息
 export const SITE_CONFIG = {
     name: 'WY NOTES',
-    title: 'WY NOTES - 技术博客与学习笔记',
+    title: 'WY NOTES - 技术与学习笔记',
     description: '记录学习过程，分享技术笔记。',
     url: SITE_URL,
     ogImage: `${SITE_URL}/og-image.png`
