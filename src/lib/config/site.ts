@@ -4,7 +4,7 @@
  */
 
 // 从环境变量读取，如果没有则使用默认值
-export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://localhost:5173';
+export const SITE_URL = import.meta.env.PUBLIC_SITE_URL || 'https://notes.wuying3052.cn';
 
 // 网站基本信息
 export const SITE_CONFIG = {
