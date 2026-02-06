@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import markdown from './src/lib/markdown/index.js';
 
@@ -10,18 +10,9 @@ const config = {
 	preprocess: [markdown(), vitePreprocess()],
 
 	kit: {
-		// adapter-auto 仅支持某些环境，请参阅 https://svelte.dev/docs/kit/adapter-auto 获取列表。
-		// 如果您的环境不受支持，或者您选择了特定环境，请关闭适配器。
-		// 有关适配器的更多信息，请参阅 https://svelte.dev/docs/kit/adapters。
-		adapter: adapter({
-			// 显示默认选项。在某些平台上
-			// 这些选项是自动设置的——见下文
-			pages: 'build',
-			assets: 'build',
-			fallback: '404.html', // for SPA mode or fallback
-			precompress: true,
-			strict: true
-		}),
+		// 使用 Vercel adapter 启用 SSR
+		// 这将确保 meta 标签在服务端渲染,微信爬虫可以正确抓取
+		adapter: adapter(),
 		alias: {
 			'@posts': 'src/posts',
 			'@data': 'src/lib/data',
