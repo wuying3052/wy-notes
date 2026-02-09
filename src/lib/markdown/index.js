@@ -9,7 +9,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeShiki from '@shikijs/rehype';
 import { transformerMetaHighlight } from '@shikijs/transformers';
-import { rehypeCopyCode, rehypeAutoTitle } from './plugins.js';
+import { rehypeCopyCode, rehypeAutoTitle, rehypeMermaid } from './plugins.js';
 
 /**
  * unified markdown 处理管道
@@ -19,6 +19,7 @@ const markdownProcessor = unified()
     .use([remarkGfm])
     .use(toHtmlAST, { allowDangerousHtml: true })
     .use([rehypeSlug, rehypeAutolinkHeadings])
+    .use(rehypeMermaid) // 在 shiki 之前处理 mermaid
     .use(rehypeAutoTitle)
     .use(rehypeShiki, {
         theme: 'github-light',

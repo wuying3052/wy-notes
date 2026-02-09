@@ -110,3 +110,41 @@ export function rehypeCopyCode() {
         });
     };
 }
+
+/**
+ * rehype 插件：处理 Mermaid 图表
+ * 将 ```mermaid 转换为 <div class="mermaid" data-code="...">
+ */
+export function rehypeMermaid() {
+    return (tree) => {
+        visit(tree, 'element', (node, index, parent) => {
+            // 查找 <pre><code>...</code></pre>
+            if (node.tagName !== 'pre') return;
+
+            const codeNode = node.children.find(c => c.tagName === 'code');
+            if (!codeNode) return;
+
+            const className = codeNode.properties?.className || [];
+            if (className.some(c => c === 'language-mermaid')) {
+                // 提取 Mermaid 代码
+                let value = codeNode.children.find(c => c.type === 'text')?.value || '';
+
+                // 简单的清理：去除首尾空白
+                value = value.trim();
+
+                // 替换节点为 <div class="mermaid" data-code="...">...</div>
+                // 使用 encodeURIComponent 避免 HTML 实体转义问题
+                parent.children[index] = {
+                    type: 'element',
+                    tagName: 'div',
+                    properties: {
+                        className: ['mermaid'],
+                        'data-code': encodeURIComponent(value)
+                    },
+                    // 初始内容为空，由前端 JS 填充，避免 SSR 转义干扰
+                    children: []
+                };
+            }
+        });
+    };
+}

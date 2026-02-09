@@ -51,6 +51,7 @@
 		"@tailwindcss/typography": "^0.5.19",
 		"gray-matter": "^4.0.3",
 		"lucide-svelte": "^0.562.0",
+		"mermaid": "^11.12.2",
 		"rehype-stringify": "^10.0.1",
 		"remark-gfm": "^4.0.1",
 		"remark-parse": "^11.0.0",
