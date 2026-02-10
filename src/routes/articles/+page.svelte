@@ -10,7 +10,7 @@
 
 	// 构建完整的页面 URL 和 OG 图片 URL
 	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
-	let ogImage = $derived(`${SITE_CONFIG.url}/og-image.png`);
+	let ogImage = $derived(SITE_CONFIG.ogImage);
 
 	type ArticleItem = {
 		id: string;

@@ -19,7 +19,7 @@
 	let ogImage = $derived(
 		meta.cover?.startsWith('http')
 			? meta.cover
-			: `${SITE_CONFIG.url}${meta.cover || '/og-image.png'}`
+			: `${SITE_CONFIG.url}${meta.cover || '/og-image.jpg'}`
 	);
 
 	let articleElement = $state<HTMLElement | null>(null);

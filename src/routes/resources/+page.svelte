@@ -10,7 +10,7 @@
 
 	// 构建完整的页面 URL 和 OG 图片 URL
 	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
-	let ogImage = $derived(`${SITE_CONFIG.url}/og-image.png`);
+	let ogImage = $derived(SITE_CONFIG.ogImage);
 
 	// 获取资源数据
 	let { resources = [] } = $derived(data as { resources?: ResourceSection[] });
@@ -159,7 +159,7 @@
 	<meta property="twitter:image" content={ogImage} />
 </svelte:head>
 
-<div class="min-h-screen flex flex-col bg-slate-50/50">
+<div class="min-h-screen flex flex-col bg-slate-50/50 overflow-x-hidden">
 	<!-- 顶部标题区域：更加精致的排版 -->
 	<header class="w-full">
 		<div class="max-w-[1440px] mx-auto px-6 pt-8 pb-4">
@@ -220,8 +220,8 @@
 	<!-- 主体布局 -->
 	<div class="flex flex-1 w-full max-w-[1440px] mx-auto pt-4 lg:pt-8">
 		<!-- 1. 核心内容展示区 -->
-		<main class="flex-1 px-6 lg:px-10 pb-24 min-w-0">
-			<div class="max-w-6xl mx-auto xl:mx-0">
+		<main class="flex-1 px-4 sm:px-6 lg:px-10 pb-24 min-w-0">
+			<div class="w-full lg:max-w-6xl lg:mx-auto xl:mx-0">
 				<!-- 移动端分类导航 (仅在小屏幕显示) -->
 				<div class="lg:hidden mb-8 overflow-x-auto pb-2 -mx-4 px-4 hide-scrollbar">
 					<div class="flex gap-2">
@@ -317,7 +317,7 @@
 
 															<!-- 自定义提示框：仅当文字溢出且悬停时显示 -->
 															<div
-																class="absolute left-[105%] top-0 w-60 bg-white text-slate-600 text-[11px] leading-relaxed p-3 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible -translate-x-2 scale-95 group-[.has-overflow]/desc:group-hover/desc:opacity-100 group-[.has-overflow]/desc:group-hover/desc:visible group-[.has-overflow]/desc:group-hover/desc:translate-x-0 group-[.has-overflow]/desc:group-hover/desc:scale-100 transition-all duration-300 delay-500 z-50 pointer-events-none border border-slate-100 origin-left select-none"
+																class="hidden md:block absolute left-[105%] top-0 w-60 bg-white text-slate-600 text-[11px] leading-relaxed p-3 rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] opacity-0 invisible -translate-x-2 scale-95 group-[.has-overflow]/desc:group-hover/desc:opacity-100 group-[.has-overflow]/desc:group-hover/desc:visible group-[.has-overflow]/desc:group-hover/desc:translate-x-0 group-[.has-overflow]/desc:group-hover/desc:scale-100 transition-all duration-300 delay-500 z-50 pointer-events-none border border-slate-100 origin-left select-none"
 															>
 																{item.desc}
 																<!-- 箭头 -->
