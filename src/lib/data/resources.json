@@ -648,5 +648,31 @@
             "CS 基础",
             "面试"
         ]
+    },
+    {
+        "id": "51",
+        "title": "Roadmap.sh",
+        "description": "涵盖前端、后端、DevOps 等全方位的开发者学习路线图与社区指南。",
+        "url": "https://roadmap.sh/",
+        "icon": "https://roadmap.sh/favicon.ico",
+        "category": "学习媒体",
+        "tags": [
+            "学习路线",
+            "Roadmap",
+            "规划"
+        ]
+    },
+    {
+        "id": "52",
+        "title": "Shadcnblocks",
+        "description": "基于 shadcn/ui 的开源块和组件集合，帮助开发者快速构建美观的界面。",
+        "url": "https://www.shadcnblocks.com/",
+        "icon": "https://www.shadcnblocks.com/favicon.ico",
+        "category": "设计资源",
+        "tags": [
+            "UI Blocks",
+            "shadcn/ui",
+            "React"
+        ]
     }
 ]

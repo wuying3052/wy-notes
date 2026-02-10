@@ -11,7 +11,7 @@
 	<meta name="description" content="探索 WY NOTES 的开源项目和数字作品，体验创意与技术的结合。" />
 </svelte:head>
 
-<div class="relative min-h-screen pb-32">
+<div class="relative min-h-screen pb-32 overflow-x-hidden">
 	<!-- 背景装饰: 彩色柔焦光晕 -->
 	<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
 		<div
@@ -29,9 +29,7 @@
 				class="flex items-center space-x-3 text-brand font-bold uppercase tracking-[0.2em] text-[10px] mb-6 overflow-hidden"
 			>
 				<div class="h-px w-8 bg-brand"></div>
-				<span class="fade-in">
-					精品数字作品展示
-				</span>
+				<span class="fade-in"> 精品数字作品展示 </span>
 			</div>
 
 			<h1 class="text-6xl md:text-8xl font-black text-slate-900 mb-8 tracking-tighter leading-none">
@@ -140,7 +138,7 @@
 
 							<!-- 背景装饰字符 (基于每个项目，随布局交替位置) -->
 							<span
-								class="absolute -top-12 {i % 2 === 0
+								class="hidden lg:block absolute -top-12 {i % 2 === 0
 									? '-right-12'
 									: '-left-12'} text-[20rem] font-black text-slate-900/[0.015] leading-none select-none pointer-events-none group-hover:text-brand/[0.04] transition-colors duration-1000 uppercase"
 							>

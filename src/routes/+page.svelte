@@ -175,8 +175,7 @@
 				<a
 					href={resolve('/projects')}
 					in:fly={{ x: 50, duration: 800, delay: 600 }}
-					class="group relative flex items-center justify-between rounded-3xl border border-white/60 bg-white/60 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/80 hover:shadow-xl hover:shadow-blue-500/10"
-					style="margin-left: 2rem;"
+					class="group relative flex items-center justify-between rounded-3xl border border-white/60 bg-white/60 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/80 hover:shadow-xl hover:shadow-blue-500/10 lg:ml-8"
 				>
 					<div class="flex items-center gap-5">
 						<div
@@ -206,8 +205,7 @@
 				<a
 					href={resolve('/resources')}
 					in:fly={{ x: 50, duration: 800, delay: 700 }}
-					class="group relative flex items-center justify-between rounded-3xl border border-white/60 bg-white/60 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/80 hover:shadow-xl hover:shadow-orange-500/10"
-					style="margin-left: 4rem;"
+					class="group relative flex items-center justify-between rounded-3xl border border-white/60 bg-white/60 p-5 shadow-lg shadow-slate-200/40 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-white/80 hover:shadow-xl hover:shadow-orange-500/10 lg:ml-16"
 				>
 					<div class="flex items-center gap-5">
 						<div
