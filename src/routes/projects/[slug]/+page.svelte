@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { ArrowLeft, Github, Layers, Calendar, ExternalLink } from 'lucide-svelte';
+	import { SITE_CONFIG } from '$lib/config/site';
 
 	interface Props {
 		data: {
@@ -27,16 +29,41 @@
 	let project = $derived(data.project);
 
 	let tocItems = $derived(project.tocItems || []);
+	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(
+		project.image
+			? project.image.startsWith('http')
+				? project.image
+				: `${SITE_CONFIG.url}${project.image.startsWith('/') ? project.image : `/${project.image}`}`
+			: SITE_CONFIG.ogImage
+	);
+	let ogImageType = $derived(
+		ogImage.endsWith('.png')
+			? 'image/png'
+			: ogImage.endsWith('.webp')
+				? 'image/webp'
+				: SITE_CONFIG.ogImageType
+	);
 </script>
 
 <svelte:head>
 	<title>{project.title} | WY NOTES</title>
 	<meta name="description" content={project.desc} />
+	<link rel="canonical" href={pageUrl} />
 	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
 	<meta property="og:title" content={project.title} />
 	<meta property="og:description" content={project.desc} />
-	<meta property="og:image" content={project.image} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={ogImageType} />
+	<meta property="og:image:alt" content={project.title} />
 	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={pageUrl} />
+	<meta property="twitter:title" content={project.title} />
+	<meta property="twitter:description" content={project.desc} />
+	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content={project.title} />
 </svelte:head>
 
 <div class="min-h-screen pb-0 bg-white">

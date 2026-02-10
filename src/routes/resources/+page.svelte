@@ -11,6 +11,8 @@
 	// 构建完整的页面 URL 和 OG 图片 URL
 	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
 	let ogImage = $derived(SITE_CONFIG.ogImage);
+	const pageTitle = '工具与灵感 | WY NOTES';
+	const pageDescription = '收藏优质的开发工具、设计灵感和技术资源，提升开发效率。';
 
 	// 获取资源数据
 	let { resources = [] } = $derived(data as { resources?: ResourceSection[] });
@@ -135,28 +137,29 @@
 </script>
 
 <svelte:head>
-	<title>工具与灵感 | WY NOTES</title>
-	<meta name="description" content="收藏优质的开发工具、设计灵感和技术资源，提升开发效率。" />
+	<title>{pageTitle}</title>
+	<link rel="canonical" href={pageUrl} />
+	<meta name="description" content={pageDescription} />
 
 	<!-- Open Graph / 社交分享 -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={pageUrl} />
-	<meta property="og:title" content="工具与灵感 | WY NOTES" />
-	<meta
-		property="og:description"
-		content="收藏优质的开发工具、设计灵感和技术资源，提升开发效率。"
-	/>
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
 	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={SITE_CONFIG.ogImageType} />
+	<meta property="og:image:width" content={SITE_CONFIG.ogImageWidth} />
+	<meta property="og:image:height" content={SITE_CONFIG.ogImageHeight} />
+	<meta property="og:image:alt" content="WY NOTES 工具与灵感" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={pageUrl} />
-	<meta property="twitter:title" content="工具与灵感 | WY NOTES" />
-	<meta
-		property="twitter:description"
-		content="收藏优质的开发工具、设计灵感和技术资源，提升开发效率。"
-	/>
+	<meta property="twitter:title" content={pageTitle} />
+	<meta property="twitter:description" content={pageDescription} />
 	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content="WY NOTES 工具与灵感" />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col bg-slate-50/50 overflow-x-hidden">

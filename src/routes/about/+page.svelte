@@ -1,8 +1,37 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { Github, Sparkles, BookText, Briefcase, Compass } from 'lucide-svelte';
 	import { fly, fade, scale } from 'svelte/transition';
+	import { SITE_CONFIG } from '$lib/config/site';
+
+	const pageTitle = '关于 | WY NOTES';
+	const pageDescription = '关于 WY NOTES：一个归档文章、项目与资源的极简站点。';
+	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(SITE_CONFIG.ogImage);
 </script>
+
+<svelte:head>
+	<title>{pageTitle}</title>
+	<link rel="canonical" href={pageUrl} />
+	<meta name="description" content={pageDescription} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={SITE_CONFIG.ogImageType} />
+	<meta property="og:image:width" content={SITE_CONFIG.ogImageWidth} />
+	<meta property="og:image:height" content={SITE_CONFIG.ogImageHeight} />
+	<meta property="og:image:alt" content={SITE_CONFIG.name} />
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={pageUrl} />
+	<meta property="twitter:title" content={pageTitle} />
+	<meta property="twitter:description" content={pageDescription} />
+	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content={SITE_CONFIG.name} />
+</svelte:head>
 
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
 	<div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6">

@@ -1,14 +1,37 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { ArrowRight, Globe, Github } from 'lucide-svelte';
+	import { SITE_CONFIG } from '$lib/config/site';
 
 	let { data } = $props();
 	let { projects } = $derived(data);
+	const pageTitle = '精选项目 | WY NOTES';
+	const pageDescription = '探索 WY NOTES 的开源项目和数字作品，体验创意与技术的结合。';
+	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(SITE_CONFIG.ogImage);
 </script>
 
 <svelte:head>
-	<title>精选项目 | WY NOTES</title>
-	<meta name="description" content="探索 WY NOTES 的开源项目和数字作品，体验创意与技术的结合。" />
+	<title>{pageTitle}</title>
+	<link rel="canonical" href={pageUrl} />
+	<meta name="description" content={pageDescription} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={SITE_CONFIG.ogImageType} />
+	<meta property="og:image:width" content={SITE_CONFIG.ogImageWidth} />
+	<meta property="og:image:height" content={SITE_CONFIG.ogImageHeight} />
+	<meta property="og:image:alt" content={SITE_CONFIG.name} />
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={pageUrl} />
+	<meta property="twitter:title" content={pageTitle} />
+	<meta property="twitter:description" content={pageDescription} />
+	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content={SITE_CONFIG.name} />
 </svelte:head>
 
 <div class="relative min-h-screen pb-32 overflow-x-hidden">

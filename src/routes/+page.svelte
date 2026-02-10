@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import { page } from '$app/state';
 	import { ArrowRight, Sparkles, BookText, Briefcase, Compass } from 'lucide-svelte';
 	import { Layers, Zap, Palette, Component, FileBraces, Server } from 'lucide-svelte';
 	import { fly } from 'svelte/transition';
@@ -13,6 +14,9 @@
 	let { data } = $props();
 	let { recentPosts, projects } = $derived(data);
 	let ready = $state(false);
+	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
+	let ogImage = $derived(SITE_CONFIG.ogImage);
+	const pageDescription = SITE_CONFIG.description;
 
 	$effect(() => {
 		ready = true;
@@ -72,6 +76,26 @@
 
 <svelte:head>
 	<title>{SITE_CONFIG.title}</title>
+	<link rel="canonical" href={pageUrl} />
+	<meta name="description" content={pageDescription} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={pageUrl} />
+	<meta property="og:title" content={SITE_CONFIG.title} />
+	<meta property="og:description" content={pageDescription} />
+	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={SITE_CONFIG.ogImageType} />
+	<meta property="og:image:width" content={SITE_CONFIG.ogImageWidth} />
+	<meta property="og:image:height" content={SITE_CONFIG.ogImageHeight} />
+	<meta property="og:image:alt" content={SITE_CONFIG.name} />
+
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={pageUrl} />
+	<meta property="twitter:title" content={SITE_CONFIG.title} />
+	<meta property="twitter:description" content={pageDescription} />
+	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content={SITE_CONFIG.name} />
 	<style>
 		:root {
 			--spotlight-color: 24, 24, 27; /* Slate-900 */

@@ -12,5 +12,9 @@ export const SITE_CONFIG = {
     title: 'WY NOTES - 技术与学习笔记',
     description: '记录学习过程，分享技术笔记。',
     url: SITE_URL,
-    ogImage: `${SITE_URL}/og-image.jpg`
+    ogImage: `${SITE_URL}/og-image.jpg`,
+    ogImageType: 'image/jpeg',
+    ogImageWidth: '800',
+    ogImageHeight: '800',
+    locale: 'zh_CN'
 } as const;

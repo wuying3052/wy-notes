@@ -45,24 +45,9 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<title>{SITE_CONFIG.title}</title>
-
-	<!-- Primary Meta Tags -->
-	<meta name="title" content={SITE_CONFIG.title} />
-	<meta name="description" content={SITE_CONFIG.description} />
-
-	<!-- Open Graph / Facebook -->
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content={`${SITE_CONFIG.url}${page.url.pathname}`} />
-	<meta property="og:title" content={SITE_CONFIG.title} />
-	<meta property="og:description" content={SITE_CONFIG.description} />
-	<meta property="og:image" content={SITE_CONFIG.ogImage} />
-
-	<!-- Twitter -->
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={`${SITE_CONFIG.url}${page.url.pathname}`} />
-	<meta property="twitter:title" content={SITE_CONFIG.title} />
-	<meta property="twitter:description" content={SITE_CONFIG.description} />
-	<meta property="twitter:image" content={SITE_CONFIG.ogImage} />
+	<meta name="robots" content="index,follow,max-image-preview:large" />
+	<meta property="og:site_name" content={SITE_CONFIG.name} />
+	<meta property="og:locale" content={SITE_CONFIG.locale} />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col relative animated-bg">

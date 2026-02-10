@@ -7,6 +7,8 @@
 	import ArticleCard from '$lib/components/articles/ArticleCard.svelte';
 	import { SITE_CONFIG } from '$lib/config/site';
 	let { data } = $props();
+	const pageTitle = '精选文章 | WY NOTES';
+	const pageDescription = '浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。';
 
 	// 构建完整的页面 URL 和 OG 图片 URL
 	let pageUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
@@ -49,31 +51,29 @@
 </script>
 
 <svelte:head>
-	<title>精选文章 | WY NOTES</title>
-	<meta
-		name="description"
-		content="浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。"
-	/>
+	<title>{pageTitle}</title>
+	<link rel="canonical" href={pageUrl} />
+	<meta name="description" content={pageDescription} />
 
 	<!-- Open Graph / 社交分享 -->
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content={pageUrl} />
-	<meta property="og:title" content="精选文章 | WY NOTES" />
-	<meta
-		property="og:description"
-		content="浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。"
-	/>
+	<meta property="og:title" content={pageTitle} />
+	<meta property="og:description" content={pageDescription} />
 	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={SITE_CONFIG.ogImageType} />
+	<meta property="og:image:width" content={SITE_CONFIG.ogImageWidth} />
+	<meta property="og:image:height" content={SITE_CONFIG.ogImageHeight} />
+	<meta property="og:image:alt" content="WY NOTES 精选文章" />
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={pageUrl} />
-	<meta property="twitter:title" content="精选文章 | WY NOTES" />
-	<meta
-		property="twitter:description"
-		content="浏览 WY NOTES 的精选技术文章，涵盖 Svelte, Tailwind, Web 开发等前沿技术。"
-	/>
+	<meta property="twitter:title" content={pageTitle} />
+	<meta property="twitter:description" content={pageDescription} />
 	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content="WY NOTES 精选文章" />
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-4 py-12">

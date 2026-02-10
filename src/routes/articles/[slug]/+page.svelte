@@ -21,6 +21,13 @@
 			? meta.cover
 			: `${SITE_CONFIG.url}${meta.cover || '/og-image.jpg'}`
 	);
+	let ogImageType = $derived(
+		ogImage.endsWith('.png')
+			? 'image/png'
+			: ogImage.endsWith('.webp')
+				? 'image/webp'
+				: SITE_CONFIG.ogImageType
+	);
 
 	let articleElement = $state<HTMLElement | null>(null);
 	let tocItems = $state<{ id: string; text: string; depth: number }[]>([]);
@@ -73,6 +80,7 @@
 <svelte:head>
 	<title>{meta.title} | WY NOTES</title>
 	<meta name="description" content={meta.description || meta.title} />
+	<link rel="canonical" href={articleUrl} />
 
 	<!-- Open Graph / 社交分享 -->
 	<meta property="og:type" content="article" />
@@ -80,6 +88,13 @@
 	<meta property="og:title" content={meta.title} />
 	<meta property="og:description" content={meta.description || meta.title} />
 	<meta property="og:image" content={ogImage} />
+	<meta property="og:image:secure_url" content={ogImage} />
+	<meta property="og:image:type" content={ogImageType} />
+	<meta property="og:image:alt" content={meta.title} />
+	{#if ogImage === SITE_CONFIG.ogImage}
+		<meta property="og:image:width" content={SITE_CONFIG.ogImageWidth} />
+		<meta property="og:image:height" content={SITE_CONFIG.ogImageHeight} />
+	{/if}
 
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
@@ -87,6 +102,7 @@
 	<meta property="twitter:title" content={meta.title} />
 	<meta property="twitter:description" content={meta.description || meta.title} />
 	<meta property="twitter:image" content={ogImage} />
+	<meta property="twitter:image:alt" content={meta.title} />
 </svelte:head>
 
 <div class="min-h-screen pb-20 bg-[#f8fafc]">
