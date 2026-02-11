@@ -17,7 +17,7 @@
 	// 构建完整的文章 URL 和 OG 图片 URL
 	let articleUrl = $derived(`${SITE_CONFIG.url}${page.url.pathname}`);
 	let ogImage = $derived(
-		meta.cover?.startsWith('http')
+		meta.cover?.startsWith('http') || meta.cover?.startsWith('data:')
 			? meta.cover
 			: `${SITE_CONFIG.url}${meta.cover || '/og-image.jpg'}`
 	);
