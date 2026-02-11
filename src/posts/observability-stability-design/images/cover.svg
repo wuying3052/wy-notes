@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(230 70) rotate(20) scale(430 250)">
+      <stop stop-color="#A78BFA" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#A78BFA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="36" fill="url(#glowA)"/>
+
+  <g opacity="0.24">
+    <path d="M740 410V180H1060V410" stroke="#C4B5FD" stroke-width="2"/>
+    <path d="M770 350L830 310L890 335L950 250L1010 290" stroke="#EDE9FE" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="830" cy="310" r="6" fill="#EDE9FE"/>
+    <circle cx="890" cy="335" r="6" fill="#EDE9FE"/>
+    <circle cx="950" cy="250" r="6" fill="#EDE9FE"/>
+    <circle cx="1010" cy="290" r="6" fill="#EDE9FE"/>
+  </g>
+
+  <text x="78" y="102" fill="#DDD6FE" font-size="28" font-family="Inter, Segoe UI, sans-serif" font-weight="700" letter-spacing="2">WY NOTES</text>
+  <text x="78" y="338" fill="white" font-size="62" font-family="Inter, Segoe UI, sans-serif" font-weight="800">可观测性与稳定性</text>
+  <text x="78" y="408" fill="#EDE9FE" font-size="34" font-family="Inter, Segoe UI, sans-serif" font-weight="600">高可用系统设计实践</text>
+  <text x="78" y="548" fill="#C4B5FD" font-size="24" font-family="Inter, Segoe UI, sans-serif">Prometheus · Grafana · Resilience4j</text>
+</svg>

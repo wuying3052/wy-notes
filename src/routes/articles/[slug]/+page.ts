@@ -15,7 +15,7 @@ export const load = async ({ params }) => {
         }
 
         // 自动发现封面图 logic (client-side compatible via Vite glob)
-        const coverImages = import.meta.glob('/src/posts/**/images/cover.{png,jpg,jpeg,webp}', {
+        const coverImages = import.meta.glob('/src/posts/**/images/cover.{svg,png,jpg,jpeg,webp}', {
             eager: true,
             query: { url: true }
         });
@@ -24,11 +24,20 @@ export const load = async ({ params }) => {
 
         // 如果没有在 frontmatter 中指定，尝试自动发现
         if (!coverImage) {
+            const extPriority = ['svg', 'webp', 'png', 'jpg', 'jpeg'];
+            const candidates: Record<string, string> = {};
             for (const path in coverImages) {
                 // 匹配路径：.../slug/images/cover.ext
                 if (path.includes(`/${params.slug}/images/cover.`)) {
+                    const ext = path.split('.').pop()?.toLowerCase();
                     const imgModule = coverImages[path] as { default: string };
-                    coverImage = imgModule.default;
+                    if (ext) candidates[ext] = imgModule.default;
+                }
+            }
+
+            for (const ext of extPriority) {
+                if (candidates[ext]) {
+                    coverImage = candidates[ext];
                     break;
                 }
             }

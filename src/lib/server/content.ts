@@ -28,8 +28,8 @@ export interface Project {
  */
 export async function getPosts(): Promise<Post[]> {
     const paths = import.meta.glob(['/src/posts/**/*.md'], { eager: true });
-    // 自动加载封面图 (支持 png, jpg, webp)，位于 images 子目录
-    const coverImages = import.meta.glob(['/src/posts/**/images/cover.{png,jpg,jpeg,webp}'], {
+    // 自动加载封面图 (支持 svg, png, jpg, webp)，位于 images 子目录
+    const coverImages = import.meta.glob(['/src/posts/**/images/cover.{svg,png,jpg,jpeg,webp}'], {
         eager: true,
         query: { url: true }
     });
@@ -65,11 +65,22 @@ export async function getPosts(): Promise<Post[]> {
             if (!post.cover_image) {
                 const dir = path.substring(0, path.lastIndexOf('/'));
 
-                // 在 coverImages 中查找以 dir/images/cover. 开头的文件
+                // 在 coverImages 中查找以 dir/images/cover. 开头的文件，按格式优先级选择
+                const extPriority = ['svg', 'webp', 'png', 'jpg', 'jpeg'];
+                const candidates: Record<string, string> = {};
                 for (const imgPath in coverImages) {
                     if (imgPath.startsWith(dir + '/images/cover.')) {
-                        const imgModule = coverImages[imgPath] as { default: string };
-                        post.cover_image = imgModule.default;
+                        const ext = imgPath.split('.').pop()?.toLowerCase();
+                        if (ext) {
+                            const imgModule = coverImages[imgPath] as { default: string };
+                            candidates[ext] = imgModule.default;
+                        }
+                    }
+                }
+
+                for (const ext of extPriority) {
+                    if (candidates[ext]) {
+                        post.cover_image = candidates[ext];
                         break;
                     }
                 }

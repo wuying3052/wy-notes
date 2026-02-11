@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B1120"/>
+      <stop offset="1" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(220 70) rotate(20) scale(430 250)">
+      <stop stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" rx="36" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="36" fill="url(#glowA)"/>
+
+  <g opacity="0.25">
+    <rect x="742" y="148" width="318" height="248" rx="20" stroke="#7DD3FC" stroke-width="2"/>
+    <path d="M780 220H920" stroke="#E0F2FE" stroke-width="2"/>
+    <path d="M885 220L930 220" stroke="#E0F2FE" stroke-width="2"/>
+    <path d="M920 200L948 220L920 240" stroke="#E0F2FE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M780 300H960" stroke="#E0F2FE" stroke-width="2"/>
+    <path d="M950 280L978 300L950 320" stroke="#E0F2FE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <text x="78" y="102" fill="#BFDBFE" font-size="28" font-family="Inter, Segoe UI, sans-serif" font-weight="700" letter-spacing="2">WY NOTES</text>
+  <text x="78" y="360" fill="white" font-size="62" font-family="Inter, Segoe UI, sans-serif" font-weight="800">Jackson URL 自动转换</text>
+  <text x="78" y="430" fill="#BAE6FD" font-size="34" font-family="Inter, Segoe UI, sans-serif" font-weight="600">存储层与展示层双向处理</text>
+  <text x="78" y="548" fill="#7DD3FC" font-size="24" font-family="Inter, Segoe UI, sans-serif">URL · CDN · Serialization</text>
+</svg>
